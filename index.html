@@ -1,0 +1,1150 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="물가톡톡·산업톡톡을 한 곳에서 접속할 수 있는 안내 페이지입니다." />
+  <title>무엇이든 물어봇 | 톡톡시리즈</title>
+  <style>
+    :root{
+      --bg:#f4f6fb;
+      --card:#ffffff;
+      --text:#111827;
+      --muted:#6b7280;
+      --line:#e5e7eb;
+      --shadow: 0 12px 30px rgba(0,0,0,.08);
+      --shadow2: 0 18px 45px rgba(0,0,0,.18);
+      --radius:18px;
+      --radius2:22px;
+      --accent:#2563eb;
+      --accent2:#1d4ed8;
+      --ok:#16a34a;
+      --warn:#d97706;
+      --danger:#dc2626;
+    }
+    *{ box-sizing:border-box; }
+    html, body{ height:100%; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans KR", Arial, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+    a{ color:inherit; text-decoration:none; }
+    button{ font-family:inherit; }
+
+    /* 접근성 */
+    .sr-only{
+      position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+      overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
+    }
+    :focus-visible{
+      outline: 3px solid rgba(37,99,235,.55);
+      outline-offset: 3px;
+      border-radius: 14px;
+    }
+    @media (prefers-reduced-motion: reduce){
+      *{ scroll-behavior:auto !important; transition:none !important; animation:none !important; }
+    }
+
+    /* 상단 헤더 */
+    header{
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .header-inner{
+      width: min(1040px, 100%);
+      margin: 0 auto;
+      padding: 14px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      min-width: 0;
+    }
+    .brand-text{
+      display:flex;
+      flex-direction:column;
+      line-height:1.2;
+      min-width:0;
+    }
+    .org{
+      font-size: 13px;
+      color: var(--muted);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .site{
+      font-weight: 900;
+      letter-spacing:-0.3px;
+      font-size: 18px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .header-actions{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      white-space:nowrap;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 8px 10px;
+      border:1px solid var(--line);
+      border-radius: 999px;
+      background:#fff;
+    }
+    .pill .dot{
+      width:10px; height:10px; border-radius:50%;
+      background: var(--ok);
+      box-shadow: 0 0 0 4px rgba(22,163,74,.12);
+    }
+
+    /* 메인 */
+    main{
+      width: min(1040px, 100%);
+      margin: 0 auto;
+      padding: 26px 18px 40px;
+    }
+    .hero{
+      padding: 18px 0 0;
+    }
+    .hero h1{
+      margin: 0;
+      font-size: clamp(22px, 3vw, 30px);
+      letter-spacing: -0.5px;
+    }
+    .hero p{
+      margin: 12px 0 0;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+    .notice{
+      margin-top: 14px;
+      display:flex;
+      gap: 10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .notice .mini{
+      font-size: 13px;
+      color: var(--muted);
+      border: 1px dashed var(--line);
+      background: rgba(255,255,255,.7);
+      padding: 10px 12px;
+      border-radius: 14px;
+      line-height: 1.6;
+    }
+
+    .grid{
+      margin-top: 18px;
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+    @media (max-width: 860px){
+      .grid{ grid-template-columns: 1fr; }
+      .header-actions{ display:none; }
+    }
+
+    .service{
+      position: relative;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius2);
+      padding: 18px;
+      box-shadow: var(--shadow);
+      transition: transform .12s ease, box-shadow .12s ease;
+      overflow:hidden;
+      cursor:pointer;
+    }
+    .service:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 16px 40px rgba(0,0,0,.11);
+    }
+
+    .tagrow{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      border: 1px solid var(--line);
+      background: rgba(37,99,235,.06);
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      color: #1f2937;
+      white-space:nowrap;
+    }
+    .tag .dot{
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      background: var(--ok);
+      box-shadow: 0 0 0 4px rgba(22,163,74,.12);
+    }
+    .service-title{
+      font-size: 22px;
+      font-weight: 900;
+      margin-top: 4px;
+      letter-spacing: -0.6px;
+    }
+    .service-desc{
+      margin-top: 10px;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 14px;
+      min-height: 44px;
+    }
+
+    .actions{
+      margin-top: 14px;
+      display:flex;
+      gap: 10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+      border-top: 1px dashed var(--line);
+      padding-top: 14px;
+    }
+    .btnrow{
+      display:flex;
+      gap: 8px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .btn{
+      border: 1px solid var(--line);
+      background: #fff;
+      color: #111827;
+      padding: 10px 12px;
+      border-radius: 14px;
+      font-weight: 800;
+      font-size: 13px;
+      cursor:pointer;
+      transition: transform .12s ease, border-color .12s ease, background .12s ease;
+      user-select:none;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      border-color: rgba(37,99,235,.45);
+      background: rgba(37,99,235,.05);
+    }
+    .btn.primary{
+      border-color: rgba(37,99,235,.35);
+      background: rgba(37,99,235,.10);
+      color: #0b2c7a;
+    }
+    .btn.primary:hover{
+      border-color: rgba(37,99,235,.65);
+      background: rgba(37,99,235,.14);
+    }
+    .hint{
+      font-size: 12px;
+      color: var(--muted);
+      display:flex;
+      align-items:center;
+      gap: 8px;
+      flex-wrap:wrap;
+    }
+    .kbd{
+      font-size: 11px;
+      border: 1px solid var(--line);
+      padding: 3px 7px;
+      border-radius: 9px;
+      background:#fff;
+      color:#374151;
+    }
+
+    /* 안내(FAQ) */
+    .info{
+      margin-top: 18px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 16px;
+    }
+    @media (max-width: 860px){
+      .info{ grid-template-columns: 1fr; }
+    }
+    .panel{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      padding: 16px;
+    }
+    details{
+      border:1px solid var(--line);
+      border-radius: 16px;
+      padding: 12px 12px;
+      background: rgba(244,246,251,.45);
+    }
+    details + details{ margin-top: 10px; }
+    summary{
+      cursor:pointer;
+      font-weight: 900;
+      list-style: none;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    .faq-body{
+      margin-top: 10px;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 14px;
+    }
+    .bullets{
+      margin: 0;
+      padding-left: 18px;
+    }
+    .bullets li{ margin: 6px 0; }
+
+    /* 푸터 */
+    footer{
+      border-top: 1px solid var(--line);
+      background: rgba(255,255,255,.88);
+    }
+    .footer-inner{
+      width: min(1040px, 100%);
+      margin: 0 auto;
+      padding: 18px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.6;
+      display:flex;
+      flex-wrap:wrap;
+      gap: 8px 14px;
+      justify-content:space-between;
+    }
+
+    /* 모달(QR) */
+    .overlay{
+      position: fixed;
+      inset: 0;
+      background: rgba(17,24,39,.55);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding: 18px;
+      z-index: 50;
+    }
+    .overlay.open{ display:flex; }
+    .modal{
+      width: min(520px, 100%);
+      background: #fff;
+      border-radius: 22px;
+      box-shadow: var(--shadow2);
+      border: 1px solid rgba(0,0,0,.08);
+      overflow:hidden;
+    }
+    .modal-head{
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+    }
+    .modal-title{
+      font-weight: 900;
+      letter-spacing:-0.3px;
+    }
+    .modal-body{
+      padding: 16px;
+      display:grid;
+      gap: 12px;
+    }
+    .qrbox{
+      display:flex;
+      gap: 14px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .qr{
+      width: 220px;
+      height: 220px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: #fff;
+      display:grid;
+      place-items:center;
+      overflow:hidden;
+    }
+    .qr img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+    }
+    .linkbox{
+      flex: 1 1 220px;
+      border:1px solid var(--line);
+      border-radius: 16px;
+      padding: 10px 12px;
+      background: rgba(244,246,251,.55);
+      font-size: 13px;
+      color: #374151;
+      word-break: break-all;
+      line-height: 1.5;
+    }
+
+    /* 토스트 */
+    .toast{
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%) translateY(20px);
+      background: rgba(17,24,39,.92);
+      color: #fff;
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-size: 13px;
+      opacity: 0;
+      pointer-events:none;
+      transition: opacity .16s ease, transform .16s ease;
+      z-index: 60;
+    }
+    .toast.show{
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  
+
+    /* 물가톡톡: 페이지 내 대화 UI */
+    .quick{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-bottom: 12px;
+    }
+    .qbtn{
+      appearance:none;
+      border:1px solid var(--line);
+      background: #fff;
+      border-radius: 999px;
+      padding: 10px 12px;
+      font-weight: 800;
+      font-size: 14px;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(0,0,0,.06);
+    }
+    .qbtn:hover{ border-color: rgba(37,99,235,.35); }
+    .qbtn.ghost{ background: rgba(37,99,235,.06); border-color: rgba(37,99,235,.18); }
+
+    .chatwrap{
+      margin-top: 6px;
+      border-top: 1px solid var(--line);
+      padding-top: 12px;
+    }
+    .chatlog{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      min-height: 84px;
+      max-height: 360px;
+      overflow:auto;
+      padding: 6px 2px 10px;
+    }
+    .bubble{
+      max-width: 92%;
+      padding: 10px 12px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: #fff;
+      line-height: 1.55;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .bubble.user{
+      margin-left:auto;
+      background: rgba(37,99,235,.08);
+      border-color: rgba(37,99,235,.20);
+    }
+    .bubble.assistant{
+      margin-right:auto;
+    }
+    .bubble .meta{
+      display:block;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 6px;
+      font-weight: 700;
+      letter-spacing: -.2px;
+    }
+    .chatform{
+      display:flex;
+      gap:10px;
+      margin-top: 10px;
+    }
+    .chatin{
+      flex:1;
+      border:1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px 12px;
+      font-size: 14px;
+      outline: none;
+      background: #fff;
+    }
+    .send{
+      border: 1px solid rgba(37,99,235,.25);
+      background: var(--accent);
+      color:#fff;
+      border-radius: 14px;
+      padding: 12px 14px;
+      font-weight: 900;
+      cursor:pointer;
+    }
+    .send:disabled{
+      opacity: .55;
+      cursor: not-allowed;
+    }
+</style>
+</head>
+
+<body>
+  <header>
+    <div class="header-inner">
+      <div class="brand" aria-label="사이트 제목">
+        <div class="brand-text">
+          <div class="org">국가데이터처 충주사무소 · 대국민 안내</div>
+          <div class="site">무엇이든 물어봇 (톡톡시리즈)</div>
+        </div>
+      </div>
+
+      <div class="header-actions" aria-label="상단 안내">
+        <span class="pill" title="운영 상태">
+          <span class="dot" aria-hidden="true"></span>
+          운영 중
+        </span>
+        <span class="pill" title="바로가기 팁">
+          팁: <span class="kbd">클릭</span> 또는 <span class="kbd">Tab</span> + <span class="kbd">Enter</span>
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>원하는 서비스를 선택해 주세요</h1>
+      <p>
+        <b>물가톡톡</b>과 <b>산업톡톡</b>은 충청지역 통계를 더 쉽게 이해할 수 있도록 돕는 대화형 안내 서비스입니다.<br/>
+        버튼을 누르면 <b>ChatGPT</b>에서 새 창(탭)으로 열립니다.
+      </p>
+
+      <div class="notice" role="note" aria-label="이용 전 안내">
+        <div class="mini">
+          <b>이용 전 꼭 확인</b><br/>
+          개인정보(주민번호·전화번호·주소·계좌 등)는 입력하지 마세요.
+        </div>
+        <div class="mini">
+          <b>로그인/접속</b><br/>
+          ChatGPT 로그인 상태에 따라 화면이 달라질 수 있어요.
+        </div>
+        <div class="mini">
+          <b>공식 수치</b><br/>
+          세부 수치는 보도자료·통계표 등 공식 자료를 함께 확인해 주세요.
+        </div>
+      </div>
+
+      <div class="grid" aria-label="서비스 목록">
+        <!-- 물가톡톡 -->
+        <article class="service" data-title="물가톡톡" data-url="https://chatgpt.com/g/g-68a662e8746481919c6a46fa6e52d958-cungceongjiyeog-sobijamulgadonghyang-caesbos-mulgatogtog" tabindex="0" role="link" aria-label="물가톡톡 열기">
+          <div class="tagrow">
+            <div class="tag"><span class="dot" aria-hidden="true"></span>운영 중</div>
+            <div class="hint" aria-hidden="true">공유: 링크 복사 · QR</div>
+          </div>
+
+          <div class="service-title">물가톡톡</div>
+          <div class="service-desc">
+            충청지역 소비자물가 동향을 핵심만 요약하고,<br/>
+            쉬운 말로 설명해 드립니다.
+          </div>
+
+          <div class="actions">
+            <div class="btnrow">
+              <button class="btn primary" type="button" data-open>접속하기 →</button>
+              <button class="btn" type="button" data-copy>링크 복사</button>
+              <button class="btn" type="button" data-qr>QR 보기</button>
+            </div>
+            <div class="hint">새 탭으로 열립니다</div>
+          </div>
+        </article>
+
+        <!-- 산업톡톡 -->
+        <article class="service" data-title="산업톡톡" data-url="https://chatgpt.com/g/g-68c3694b46a0819180e441a1ace740cd-cungceongjiyeog-saneobhwaldongdonghyang-caesbos-saneobtogtog" tabindex="0" role="link" aria-label="산업톡톡 열기">
+          <div class="tagrow">
+            <div class="tag"><span class="dot" aria-hidden="true"></span>운영 중</div>
+            <div class="hint" aria-hidden="true">공유: 링크 복사 · QR</div>
+          </div>
+
+          <div class="service-title">산업톡톡</div>
+          <div class="service-desc">
+            충청지역 산업활동 동향을 한눈에 볼 수 있도록<br/>
+            주요 지표를 정리해 드립니다.
+          </div>
+
+          <div class="actions">
+            <div class="btnrow">
+              <button class="btn primary" type="button" data-open>접속하기 →</button>
+              <button class="btn" type="button" data-copy>링크 복사</button>
+              <button class="btn" type="button" data-qr>QR 보기</button>
+            </div>
+            <div class="hint">새 탭으로 열립니다</div>
+          </div>
+        </article>
+      </div>
+      <!-- 물가톡톡: 대국민용 빠른 질문(페이지 내 답변) -->
+      <section id="mulgatalk" class="panel" aria-label="물가톡톡 빠른 질문" style="display:none; margin-top:14px;">
+        <h2 style="margin:0 0 10px;font-size:16px;letter-spacing:-.3px;">물가톡톡 빠른 질문</h2>
+        <p class="muted" style="margin:0 0 12px;">
+          아래 버튼을 누르면 <b>페이지에서 바로 답변</b>을 보여드려요. (기관 내부 서버에 연결된 API가 준비되어 있어야 동작합니다.)
+        </p>
+
+        <div class="quick" role="group" aria-label="물가톡톡 질문 버튼">
+          <button class="qbtn" type="button" data-q="summary">1. 이번달 물가동향 요약 해줘</button>
+          <button class="qbtn" type="button" data-q="col">2. 생활물가지수 요약 해줘</button>
+          <button class="qbtn" type="button" data-q="term">3. 물가용어 설명해줘</button>
+          <button class="qbtn ghost" type="button" data-q="free">4. 그냥 내가 물어볼게</button>
+        </div>
+
+        <div class="chatwrap" aria-label="대화 내용">
+          <div id="chatLog" class="chatlog" aria-live="polite" aria-relevant="additions"></div>
+
+          <form id="chatForm" class="chatform" autocomplete="off">
+            <label class="sr-only" for="chatInput">추가 질문 입력</label>
+            <input id="chatInput" class="chatin" type="text" inputmode="text"
+              placeholder="추가 질문을 입력하세요 (예: 채소 값은 왜 올랐어?)" />
+            <button id="chatSend" class="send" type="submit">전송</button>
+          </form>
+
+          <div id="chatHint" class="muted" style="margin-top:8px;font-size:13px;">
+            답변은 참고용이며, 최종 수치는 공식 보도자료/통계표를 확인해 주세요.
+          </div>
+        </div>
+      </section>
+
+
+      <!-- 산업톡톡: 대국민용 빠른 질문(페이지 내 답변) -->
+      <section id="saneobtalk" class="panel" aria-label="산업톡톡 빠른 질문" style="display:none; margin-top:14px;">
+        <h2 style="margin:0 0 10px;font-size:16px;letter-spacing:-.3px;">산업톡톡 빠른 질문</h2>
+        <p class="muted" style="margin:0 0 12px;">
+          아래 버튼을 누르면 <b>페이지에서 바로 답변</b>을 보여드려요. (기관 내부 서버에 연결된 API가 준비되어 있어야 동작합니다.)
+        </p>
+
+        <div class="quick" role="group" aria-label="산업톡톡 질문 버튼">
+          <button class="qbtn" type="button" data-q2="summary">1. 이번달 산업동향 요약 해줘</button>
+          <button class="qbtn" type="button" data-q2="key">2. 주요 지표(생산·소비·투자) 요약 해줘</button>
+          <button class="qbtn" type="button" data-q2="term">3. 산업용어 설명해줘</button>
+          <button class="qbtn ghost" type="button" data-q2="free">4. 그냥 내가 물어볼게</button>
+        </div>
+
+        <div class="chatwrap" aria-label="대화 내용">
+          <div id="chatLog2" class="chatlog" aria-live="polite" aria-relevant="additions"></div>
+
+          <form id="chatForm2" class="chatform" autocomplete="off">
+            <label class="sr-only" for="chatInput2">추가 질문 입력</label>
+            <input id="chatInput2" class="chatin" type="text" inputmode="text"
+              placeholder="추가 질문을 입력하세요 (예: 재고순환지수는 뭐야?)" />
+            <button id="chatSend2" class="send" type="submit">전송</button>
+          </form>
+
+          <div class="muted" style="margin-top:8px;font-size:13px;">
+            답변은 참고용이며, 최종 수치는 공식 보도자료/통계표를 확인해 주세요.
+          </div>
+        </div>
+      </section>
+
+
+
+      <div class="info" aria-label="추가 안내">
+        <section class="panel" aria-label="자주 묻는 질문">
+          <h2 style="margin:0 0 10px;font-size:16px;letter-spacing:-.3px;">자주 묻는 질문</h2>
+
+          <details>
+            <summary>Q. ‘이번 달’ 동향은 어떤 기준인가요?</summary>
+            <div class="faq-body">
+              보도자료/월보에서 사용하는 기준(발표월, 기준월 등)에 따라 표현이 달라질 수 있어요.
+              챗봇 답변에서 <b>기준월</b>이 보이면 그 값을 우선 확인해 주세요.
+            </div>
+          </details>
+
+          <details>
+            <summary>Q. 숫자가 다르게 보이거나, 설명이 길어져요.</summary>
+            <div class="faq-body">
+              같은 주제라도 질문 방식에 따라 요약 수준이 달라질 수 있어요.
+              <ul class="bullets">
+                <li>짧게 원하면: “핵심만 3줄로”</li>
+                <li>표로 원하면: “지표를 표로 정리해줘”</li>
+                <li>근거가 필요하면: “출처(보도자료/표)도 같이 알려줘”</li>
+              </ul>
+            </div>
+          </details>
+
+          <details>
+            <summary>Q. 개인정보를 입력해도 되나요?</summary>
+            <div class="faq-body">
+              아니요. 주민번호·전화번호·주소·계좌번호 등 개인을 특정할 수 있는 정보는 입력하지 마세요.
+              민원/신고 목적이라면 별도의 공식 창구를 이용해 주세요.
+            </div>
+          </details>
+        </section>
+
+        <aside class="panel" aria-label="문의 및 안내">
+          <h2 style="margin:0 0 10px;font-size:16px;letter-spacing:-.3px;">안내</h2>
+          <div style="color:var(--muted);font-size:14px;line-height:1.7;">
+            <ul class="bullets">
+              <li>이 페이지는 <b>서비스 접속</b>을 위한 안내 페이지입니다.</li>
+              <li>연결된 챗봇은 외부 서비스(ChatGPT)에서 실행됩니다.</li>
+              <li>접속이 원활하지 않다면, 브라우저를 새로고침하거나 잠시 후 다시 시도해 주세요.</li>
+            </ul>
+            <div style="margin-top:10px;border-top:1px dashed var(--line);padding-top:10px;">
+              <b>홍보물/안내문에 QR이 필요</b>하면<br/>
+              각 카드의 <b>QR 보기</b>를 눌러 사용하세요.
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>© 국가데이터처 충주사무소</div>
+      <div>본 페이지는 안내용이며, 연결된 챗봇 응답은 참고용입니다. 중요한 판단/정책결정은 공식 통계자료를 확인해 주세요.</div>
+    </div>
+  </footer>
+
+  <!-- QR 모달 -->
+  <div class="overlay" id="qrOverlay" role="dialog" aria-modal="true" aria-labelledby="qrTitle">
+    <div class="modal">
+      <div class="modal-head">
+        <div class="modal-title" id="qrTitle">QR 보기</div>
+        <button class="btn" type="button" id="qrClose" aria-label="닫기">닫기 ✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="qrbox">
+          <div class="qr" aria-label="QR 코드 이미지">
+            <img id="qrImg" alt="QR 코드" src="" />
+          </div>
+          <div class="linkbox" id="qrLink"></div>
+        </div>
+        <div class="btnrow">
+          <button class="btn primary" type="button" id="qrOpen">새 탭에서 열기</button>
+          <button class="btn" type="button" id="qrCopy">링크 복사</button>
+        </div>
+        <div class="hint">QR은 외부 QR 생성 서비스를 사용해 즉시 생성됩니다.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    (function(){
+      const toast = document.getElementById('toast');
+      let toastTimer = null;
+
+      function showToast(msg){
+        toast.textContent = msg;
+        toast.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(()=> toast.classList.remove('show'), 1300);
+      }
+
+      async function copyText(text){
+        try{
+          await navigator.clipboard.writeText(text);
+          showToast('복사 완료!');
+          return true;
+        }catch(e){
+          // 클립보드 권한 실패 대비(구형/제한 환경)
+          try{
+            const ta = document.createElement('textarea');
+            ta.value = text;
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            showToast('복사 완료!');
+            return true;
+          }catch(err){
+            showToast('복사 실패 (브라우저 설정 확인)');
+            return false;
+          }
+        }
+      }
+
+      function openInNewTab(url){
+        window.open(url, '_blank', 'noopener,noreferrer');
+      }
+
+      // ===== 물가톡톡: 페이지 내 질문/답변 (백엔드 API 필요) =====
+      const mulgaSection = document.getElementById('mulgatalk');
+      const chatLog = document.getElementById('chatLog');
+      const chatForm = document.getElementById('chatForm');
+      const chatInput = document.getElementById('chatInput');
+      const chatSend = document.getElementById('chatSend');
+
+      // 대화 상태(프론트)
+      const convo = [
+        {
+          role: 'system',
+          content:
+            '당신은 "물가톡톡" 도우미입니다. 한국어로 친절하고 쉽게 설명하세요. ' +
+            '가능하면 전월비/전년동월비를 구분해 말하고, 생활 밀접 품목 예시를 2~3개 들어주세요. ' +
+            '모르면 추측하지 말고, 어떤 공식자료(보도자료/통계표)를 확인하면 되는지 안내하세요.'
+        }
+      ];
+
+      function showMulgaPanel(){
+        mulgaSection.style.display = 'block';
+        // 첫 진입 안내가 없으면 1회만 표시
+        if(!chatLog.dataset.welcomed){
+          appendBubble('assistant', '원하시는 버튼을 눌러 보세요. 바로 요약해 드릴게요 🙂');
+          chatLog.dataset.welcomed = '1';
+        }
+        mulgaSection.scrollIntoView({behavior:'smooth', block:'start'});
+      }
+
+      function appendBubble(role, text){
+        const div = document.createElement('div');
+        div.className = 'bubble ' + (role === 'user' ? 'user' : 'assistant');
+
+        const meta = document.createElement('span');
+        meta.className = 'meta';
+        meta.textContent = role === 'user' ? '나' : '물가톡톡';
+        div.appendChild(meta);
+
+        div.appendChild(document.createTextNode(text));
+        chatLog.appendChild(div);
+        chatLog.scrollTop = chatLog.scrollHeight;
+      }
+
+      async function callBackend(messages){
+        // ❗ 브라우저에 OpenAI API Key를 넣으면 절대 안 됩니다.
+        // 이 프론트는 "우리 서버"에만 요청하고, 서버가 OpenAI로 중계합니다.
+        const res = await fetch('/api/mulgatogtog', {
+          method: 'POST',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({ messages })
+        });
+
+        if(!res.ok){
+          const t = await res.text().catch(()=> '');
+          throw new Error('API 오류 (' + res.status + '): ' + (t || '서버 응답 없음'));
+        }
+        return await res.json();
+      }
+
+      async function sendUserMessage(text){
+        const q = (text || '').trim();
+        if(!q) return;
+
+        appendBubble('user', q);
+        convo.push({role:'user', content:q});
+
+        chatSend.disabled = true;
+        chatInput.disabled = true;
+
+        // 로딩 버블
+        const loadingId = 'loading-' + Date.now();
+        const loading = document.createElement('div');
+        loading.className = 'bubble assistant';
+        loading.id = loadingId;
+        const meta = document.createElement('span');
+        meta.className = 'meta';
+        meta.textContent = '물가톡톡';
+        loading.appendChild(meta);
+        loading.appendChild(document.createTextNode('답변 생성 중…'));
+        chatLog.appendChild(loading);
+        chatLog.scrollTop = chatLog.scrollHeight;
+
+        try{
+          const data = await callBackend(convo);
+          const answer = (data && (data.text || data.answer || data.output)) || '';
+          document.getElementById(loadingId)?.remove();
+
+          if(!answer){
+            appendBubble('assistant', '서버에서 답변을 받지 못했어요. (응답 형식 확인 필요)');
+          }else{
+            appendBubble('assistant', answer);
+            convo.push({role:'assistant', content: answer});
+          }
+        }catch(err){
+          document.getElementById(loadingId)?.remove();
+          appendBubble('assistant',
+            '지금은 페이지에서 바로 답변을 가져올 수 없어요.\n' +
+            '• 서버(API) 연결이 아직 없거나\n' +
+            '• 주소(/api/mulgatogtog)가 준비되지 않았을 수 있어요.\n\n' +
+            '임시로는 "접속하기 →" 버튼으로 물가톡톡을 열어 이용해 주세요.'
+          );
+          console.error(err);
+        }finally{
+          chatSend.disabled = false;
+          chatInput.disabled = false;
+          chatInput.focus();
+        }
+      }
+
+      // 빠른 질문 버튼
+      mulgaSection?.querySelectorAll('[data-q]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const kind = btn.getAttribute('data-q');
+          if(kind === 'free'){
+            chatInput.focus();
+            return;
+          }
+          const promptMap = {
+            summary: '이번달 충청지역 소비자물가동향을 핵심만 5줄로 요약해줘. 전년동월비와 전월비를 구분해서 설명해줘.',
+            col: '이번달 생활물가지수(체감물가) 흐름을 핵심만 요약해줘. 생활 밀접 품목 예시를 3개 들어줘.',
+            term: '소비자물가지수(CPI), 생활물가지수, 근원물가지수(식료품및에너지제외), 전년동월비, 전월비를 쉬운 말로 설명해줘.'
+          };
+          sendUserMessage(promptMap[kind] || '');
+        });
+      });
+
+      // 추가 질문 입력
+      chatForm?.addEventListener('submit', (e)=>{
+        e.preventDefault();
+        sendUserMessage(chatInput.value);
+        chatInput.value = '';
+      });
+
+      // ===== 산업톡톡: 페이지 내 질문/답변 (백엔드 API 필요) =====
+      const saneobSection = document.getElementById('saneobtalk');
+      const chatLog2 = document.getElementById('chatLog2');
+      const chatForm2 = document.getElementById('chatForm2');
+      const chatInput2 = document.getElementById('chatInput2');
+      const chatSend2 = document.getElementById('chatSend2');
+
+      const convo2 = [
+        {
+          role: 'system',
+          content:
+            '당신은 "산업톡톡" 도우미입니다. 한국어로 친절하고 쉽게 설명하세요. ' +
+            '가능하면 생산·소비·투자(광공업/서비스업 생산, 소매판매, 설비투자, 건설기성 등) 흐름을 구분해 말하고, ' +
+            '좋았던 점/아쉬웠던 점을 각각 1~2개씩 짚어주세요. ' +
+            '모르면 추측하지 말고, 어떤 공식자료(보도자료/통계표)를 확인하면 되는지 안내하세요.'
+        }
+      ];
+
+      function showSaneobPanel(){
+        saneobSection.style.display = 'block';
+        if(!chatLog2.dataset.welcomed){
+          appendBubble2('assistant', '원하시는 버튼을 눌러 보세요. 산업동향을 쉽게 정리해 드릴게요 🙂');
+          chatLog2.dataset.welcomed = '1';
+        }
+        saneobSection.scrollIntoView({behavior:'smooth', block:'start'});
+      }
+
+      function appendBubble2(role, text){
+        const div = document.createElement('div');
+        div.className = 'bubble ' + (role === 'user' ? 'user' : 'assistant');
+
+        const meta = document.createElement('span');
+        meta.className = 'meta';
+        meta.textContent = role === 'user' ? '나' : '산업톡톡';
+        div.appendChild(meta);
+
+        div.appendChild(document.createTextNode(text));
+        chatLog2.appendChild(div);
+        chatLog2.scrollTop = chatLog2.scrollHeight;
+      }
+
+      async function callBackend2(messages){
+        const res = await fetch('/api/saneobtogtog', {
+          method: 'POST',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({ messages })
+        });
+
+        if(!res.ok){
+          const t = await res.text().catch(()=> '');
+          throw new Error('API 오류 (' + res.status + '): ' + (t || '서버 응답 없음'));
+        }
+        return await res.json();
+      }
+
+      async function sendUserMessage2(text){
+        const q = (text || '').trim();
+        if(!q) return;
+
+        appendBubble2('user', q);
+        convo2.push({role:'user', content:q});
+
+        chatSend2.disabled = true;
+        chatInput2.disabled = true;
+
+        const loadingId = 'loading2-' + Date.now();
+        const loading = document.createElement('div');
+        loading.className = 'bubble assistant';
+        loading.id = loadingId;
+        const meta = document.createElement('span');
+        meta.className = 'meta';
+        meta.textContent = '산업톡톡';
+        loading.appendChild(meta);
+        loading.appendChild(document.createTextNode('답변 생성 중…'));
+        chatLog2.appendChild(loading);
+        chatLog2.scrollTop = chatLog2.scrollHeight;
+
+        try{
+          const data = await callBackend2(convo2);
+          const answer = (data && (data.text || data.answer || data.output)) || '';
+          document.getElementById(loadingId)?.remove();
+
+          if(!answer){
+            appendBubble2('assistant', '서버에서 답변을 받지 못했어요. (응답 형식 확인 필요)');
+          }else{
+            appendBubble2('assistant', answer);
+            convo2.push({role:'assistant', content: answer});
+          }
+        }catch(err){
+          document.getElementById(loadingId)?.remove();
+          appendBubble2('assistant',
+            '지금은 페이지에서 바로 답변을 가져올 수 없어요.\n' +
+            '• 서버(API) 연결이 아직 없거나\n' +
+            '• 주소(/api/saneobtogtog)가 준비되지 않았을 수 있어요.\n\n' +
+            '임시로는 "접속하기 →" 버튼으로 산업톡톡을 열어 이용해 주세요.'
+          );
+          console.error(err);
+        }finally{
+          chatSend2.disabled = false;
+          chatInput2.disabled = false;
+          chatInput2.focus();
+        }
+      }
+
+      saneobSection?.querySelectorAll('[data-q2]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const kind = btn.getAttribute('data-q2');
+          if(kind === 'free'){
+            chatInput2.focus();
+            return;
+          }
+          const promptMap = {
+            summary: '이번달 충청지역 산업활동동향을 핵심만 5줄로 요약해줘. 생산·소비·투자 흐름 중심으로 설명해줘.',
+            key: '이번달 충청지역 주요 지표(광공업 생산/서비스업 생산/소매판매/설비투자/건설기성)를 한 번에 이해할 수 있게 표처럼 정리한 뒤, 핵심 포인트를 5줄로 요약해줘.',
+            term: '광공업생산지수, 서비스업생산지수, 소매판매액지수(소비), 설비투자지수, 건설기성, 재고순환지수, 평균가동률을 쉬운 말로 설명해줘.'
+          };
+          sendUserMessage2(promptMap[kind] || '');
+        });
+      });
+
+      chatForm2?.addEventListener('submit', (e)=>{
+        e.preventDefault();
+        sendUserMessage2(chatInput2.value);
+        chatInput2.value = '';
+      });
+
+
+      // 카드 클릭/키보드로 열기
+      document.querySelectorAll('.service').forEach(card => {
+        const url = card.dataset.url;
+
+        card.addEventListener('click', (e) => {
+          // 버튼 클릭은 각 버튼 핸들러에서 처리
+          if(e.target && (e.target.closest('button'))) return;
+
+          if(card.dataset.title === '물가톡톡'){
+            showMulgaPanel();
+          }else if(card.dataset.title === '산업톡톡'){
+            showSaneobPanel();
+          }else{
+            openInNewTab(url);
+          }
+        });
+
+        card.addEventListener('keydown', (e) => {
+          if(e.key === 'Enter' || e.key === ' '){
+            e.preventDefault();
+            if(card.dataset.title === '물가톡톡'){
+            showMulgaPanel();
+          }else if(card.dataset.title === '산업톡톡'){
+            showSaneobPanel();
+          }else{
+            openInNewTab(url);
+          }
+          }
+        });
+
+        // 버튼들
+        const openBtn = card.querySelector('[data-open]');
+        const copyBtn = card.querySelector('[data-copy]');
+        const qrBtn   = card.querySelector('[data-qr]');
+
+        openBtn.addEventListener('click', (e)=>{ e.stopPropagation(); openInNewTab(url); });
+        copyBtn.addEventListener('click', async (e)=>{ e.stopPropagation(); await copyText(url); });
+        qrBtn.addEventListener('click', (e)=>{ e.stopPropagation(); openQr(card.dataset.title, url); });
+      });
+
+      // QR 모달
+      const overlay = document.getElementById('qrOverlay');
+      const qrImg = document.getElementById('qrImg');
+      const qrLink = document.getElementById('qrLink');
+      const qrTitle = document.getElementById('qrTitle');
+      const qrClose = document.getElementById('qrClose');
+      const qrOpen = document.getElementById('qrOpen');
+      const qrCopy = document.getElementById('qrCopy');
+
+      let currentUrl = '';
+      let lastFocus = null;
+
+      function openQr(title, url){
+        currentUrl = url;
+        lastFocus = document.activeElement;
+
+        qrTitle.textContent = title + ' · QR 보기';
+        qrLink.textContent = url;
+
+        // 외부 QR 생성(간단/가벼움) - Google Chart API
+        const encoded = encodeURIComponent(url);
+        qrImg.src = 'https://chart.googleapis.com/chart?cht=qr&chs=320x320&chl=' + encoded;
+
+        overlay.classList.add('open');
+        qrClose.focus();
+      }
+
+      function closeQr(){
+        overlay.classList.remove('open');
+        currentUrl = '';
+        if(lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+      }
+
+      overlay.addEventListener('click', (e)=>{
+        if(e.target === overlay) closeQr();
+      });
+      qrClose.addEventListener('click', closeQr);
+
+      document.addEventListener('keydown', (e)=>{
+        if(!overlay.classList.contains('open')) return;
+        if(e.key === 'Escape') closeQr();
+      });
+
+      qrOpen.addEventListener('click', ()=> openInNewTab(currentUrl));
+      qrCopy.addEventListener('click', async ()=> await copyText(currentUrl));
+    })();
+  </script>
+</body>
+</html>

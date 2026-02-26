@@ -242,6 +242,17 @@ ${enforceLatest ? "- 최신 자료만 사용하세요. (is_latest=true로 필터
 
   const data = await response.json();
 
+// 🔹 토큰 사용량 로그
+if (data.usage) {
+  const inputTokens = data.usage.input_tokens || 0;
+  const outputTokens = data.usage.output_tokens || 0;
+  const totalTokens = inputTokens + outputTokens;
+
+  console.log(
+    `📊 [${domainLabel}] input=${inputTokens} output=${outputTokens} total=${totalTokens}`
+  );
+}
+
   // ✅ file_search 결과가 0개면 아예 서버가 “자료 없음”으로 고정 응답
   const searchResults =
     (data.output || [])

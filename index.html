@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="물가톡톡·산업톡톡을 한 곳에서 접속할 수 있는 안내 페이지입니다." />
-  <title>무엇이든 물어봇 | 톡톡시리즈</title>
+  <title>충청경제톡 | 톡톡시리즈</title>
   <style>
     :root{
       --bg:#f4f6fb;
@@ -213,6 +213,14 @@
       margin-top: 4px;
       letter-spacing: -0.6px;
     }
+    .titlebtn{
+      background: transparent;
+      border: 0;
+      padding: 0;
+      text-align: left;
+      width: 100%;
+      cursor: pointer;
+    }
     .service-desc{
       margin-top: 10px;
       color: var(--muted);
@@ -340,76 +348,6 @@
       justify-content:space-between;
     }
 
-    /* 모달(QR) */
-    .overlay{
-      position: fixed;
-      inset: 0;
-      background: rgba(17,24,39,.55);
-      display:none;
-      align-items:center;
-      justify-content:center;
-      padding: 18px;
-      z-index: 50;
-    }
-    .overlay.open{ display:flex; }
-    .modal{
-      width: min(520px, 100%);
-      background: #fff;
-      border-radius: 22px;
-      box-shadow: var(--shadow2);
-      border: 1px solid rgba(0,0,0,.08);
-      overflow:hidden;
-    }
-    .modal-head{
-      padding: 14px 16px;
-      border-bottom: 1px solid var(--line);
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 10px;
-    }
-    .modal-title{
-      font-weight: 900;
-      letter-spacing:-0.3px;
-    }
-    .modal-body{
-      padding: 16px;
-      display:grid;
-      gap: 12px;
-    }
-    .qrbox{
-      display:flex;
-      gap: 14px;
-      align-items:center;
-      flex-wrap:wrap;
-    }
-    .qr{
-      width: 220px;
-      height: 220px;
-      border-radius: 16px;
-      border: 1px solid var(--line);
-      background: #fff;
-      display:grid;
-      place-items:center;
-      overflow:hidden;
-    }
-    .qr img{
-      width:100%;
-      height:100%;
-      object-fit: cover;
-    }
-    .linkbox{
-      flex: 1 1 220px;
-      border:1px solid var(--line);
-      border-radius: 16px;
-      padding: 10px 12px;
-      background: rgba(244,246,251,.55);
-      font-size: 13px;
-      color: #374151;
-      word-break: break-all;
-      line-height: 1.5;
-    }
-
     /* 토스트 */
     .toast{
       position: fixed;
@@ -529,7 +467,7 @@
       <div class="brand" aria-label="사이트 제목">
         <div class="brand-text">
           <div class="org">국가데이터처 충주사무소 · 대국민 안내</div>
-          <div class="site">무엇이든 물어봇 (톡톡시리즈)</div>
+          <div class="site">충청경제톡 (톡톡시리즈)</div>
         </div>
       </div>
 
@@ -550,7 +488,7 @@
       <h1>원하는 서비스를 선택해 주세요</h1>
       <p>
         <b>물가톡톡</b>과 <b>산업톡톡</b>은 충청지역 통계를 더 쉽게 이해할 수 있도록 돕는 대화형 안내 서비스입니다.<br/>
-        버튼을 누르면 <b>ChatGPT</b>에서 새 창(탭)으로 열립니다.
+        <b>여기서보기</b>는 이 페이지에서 바로 질문/답변을 보여주고, <b>GPT에서 보기</b>는 <b>ChatGPT</b>에서 새 창(탭)으로 열립니다.
       </p>
 
       <div class="notice" role="note" aria-label="이용 전 안내">
@@ -573,10 +511,10 @@
         <article class="service" data-title="물가톡톡" data-url="https://chatgpt.com/g/g-68a662e8746481919c6a46fa6e52d958-cungceongjiyeog-sobijamulgadonghyang-caesbos-mulgatogtog" tabindex="0" role="link" aria-label="물가톡톡 열기">
           <div class="tagrow">
             <div class="tag"><span class="dot" aria-hidden="true"></span>운영 중</div>
-            <div class="hint" aria-hidden="true">공유: 링크 복사 · QR</div>
+            <div class="hint" aria-hidden="true">보기: 여기서보기 · GPT</div>
           </div>
 
-          <div class="service-title">물가톡톡</div>
+          <button class="service-title titlebtn" type="button" data-local aria-label="물가톡톡 여기서보기">물가톡톡</button>
           <div class="service-desc">
             충청지역 소비자물가 동향을 핵심만 요약하고,<br/>
             쉬운 말로 설명해 드립니다.
@@ -584,11 +522,11 @@
 
           <div class="actions">
             <div class="btnrow">
-              <button class="btn primary" type="button" data-open>접속하기 →</button>
+              <button class="btn" type="button" data-local>여기서보기</button>
+              <button class="btn primary" type="button" data-open>GPT에서 보기 →</button>
               <button class="btn" type="button" data-copy>링크 복사</button>
-              <button class="btn" type="button" data-qr>QR 보기</button>
             </div>
-            <div class="hint">새 탭으로 열립니다</div>
+            <div class="hint">GPT는 새 탭으로 열립니다</div>
           </div>
         </article>
 
@@ -596,10 +534,10 @@
         <article class="service" data-title="산업톡톡" data-url="https://chatgpt.com/g/g-68c3694b46a0819180e441a1ace740cd-cungceongjiyeog-saneobhwaldongdonghyang-caesbos-saneobtogtog" tabindex="0" role="link" aria-label="산업톡톡 열기">
           <div class="tagrow">
             <div class="tag"><span class="dot" aria-hidden="true"></span>운영 중</div>
-            <div class="hint" aria-hidden="true">공유: 링크 복사 · QR</div>
+            <div class="hint" aria-hidden="true">보기: 여기서보기 · GPT</div>
           </div>
 
-          <div class="service-title">산업톡톡</div>
+          <button class="service-title titlebtn" type="button" data-local aria-label="산업톡톡 여기서보기">산업톡톡</button>
           <div class="service-desc">
             충청지역 산업활동 동향을 한눈에 볼 수 있도록<br/>
             주요 지표를 정리해 드립니다.
@@ -607,11 +545,11 @@
 
           <div class="actions">
             <div class="btnrow">
-              <button class="btn primary" type="button" data-open>접속하기 →</button>
+              <button class="btn" type="button" data-local>여기서보기</button>
+              <button class="btn primary" type="button" data-open>GPT에서 보기 →</button>
               <button class="btn" type="button" data-copy>링크 복사</button>
-              <button class="btn" type="button" data-qr>QR 보기</button>
             </div>
-            <div class="hint">새 탭으로 열립니다</div>
+            <div class="hint">GPT는 새 탭으로 열립니다</div>
           </div>
         </article>
       </div>
@@ -719,10 +657,6 @@
               <li>연결된 챗봇은 외부 서비스(ChatGPT)에서 실행됩니다.</li>
               <li>접속이 원활하지 않다면, 브라우저를 새로고침하거나 잠시 후 다시 시도해 주세요.</li>
             </ul>
-            <div style="margin-top:10px;border-top:1px dashed var(--line);padding-top:10px;">
-              <b>홍보물/안내문에 QR이 필요</b>하면<br/>
-              각 카드의 <b>QR 보기</b>를 눌러 사용하세요.
-            </div>
           </div>
         </aside>
       </div>
@@ -735,29 +669,6 @@
       <div>본 페이지는 안내용이며, 연결된 챗봇 응답은 참고용입니다. 중요한 판단/정책결정은 공식 통계자료를 확인해 주세요.</div>
     </div>
   </footer>
-
-  <!-- QR 모달 -->
-  <div class="overlay" id="qrOverlay" role="dialog" aria-modal="true" aria-labelledby="qrTitle">
-    <div class="modal">
-      <div class="modal-head">
-        <div class="modal-title" id="qrTitle">QR 보기</div>
-        <button class="btn" type="button" id="qrClose" aria-label="닫기">닫기 ✕</button>
-      </div>
-      <div class="modal-body">
-        <div class="qrbox">
-          <div class="qr" aria-label="QR 코드 이미지">
-            <img id="qrImg" alt="QR 코드" src="" />
-          </div>
-          <div class="linkbox" id="qrLink"></div>
-        </div>
-        <div class="btnrow">
-          <button class="btn primary" type="button" id="qrOpen">새 탭에서 열기</button>
-          <button class="btn" type="button" id="qrCopy">링크 복사</button>
-        </div>
-        <div class="hint">QR은 외부 QR 생성 서비스를 사용해 즉시 생성됩니다.</div>
-      </div>
-    </div>
-  </div>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
@@ -1089,61 +1000,22 @@
           }
         });
 
-        // 버튼들
+        // 버튼들 (여기서보기/큰 제목 모두 data-local)
+        const localBtns = card.querySelectorAll('[data-local]');
         const openBtn = card.querySelector('[data-open]');
         const copyBtn = card.querySelector('[data-copy]');
-        const qrBtn   = card.querySelector('[data-qr]');
+
+        localBtns?.forEach((btn)=>{
+          btn.addEventListener('click', (e)=>{
+            e.stopPropagation();
+            if(card.dataset.title === '물가톡톡') showMulgaPanel();
+            else if(card.dataset.title === '산업톡톡') showSaneobPanel();
+          });
+        });
 
         openBtn.addEventListener('click', (e)=>{ e.stopPropagation(); openInNewTab(url); });
         copyBtn.addEventListener('click', async (e)=>{ e.stopPropagation(); await copyText(url); });
-        qrBtn.addEventListener('click', (e)=>{ e.stopPropagation(); openQr(card.dataset.title, url); });
       });
-
-      // QR 모달
-      const overlay = document.getElementById('qrOverlay');
-      const qrImg = document.getElementById('qrImg');
-      const qrLink = document.getElementById('qrLink');
-      const qrTitle = document.getElementById('qrTitle');
-      const qrClose = document.getElementById('qrClose');
-      const qrOpen = document.getElementById('qrOpen');
-      const qrCopy = document.getElementById('qrCopy');
-
-      let currentUrl = '';
-      let lastFocus = null;
-
-      function openQr(title, url){
-        currentUrl = url;
-        lastFocus = document.activeElement;
-
-        qrTitle.textContent = title + ' · QR 보기';
-        qrLink.textContent = url;
-
-        // 외부 QR 생성(간단/가벼움) - Google Chart API
-        const encoded = encodeURIComponent(url);
-        qrImg.src = 'https://chart.googleapis.com/chart?cht=qr&chs=320x320&chl=' + encoded;
-
-        overlay.classList.add('open');
-        qrClose.focus();
-      }
-
-      function closeQr(){
-        overlay.classList.remove('open');
-        currentUrl = '';
-        if(lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
-      }
-
-      overlay.addEventListener('click', (e)=>{
-        if(e.target === overlay) closeQr();
-      });
-      qrClose.addEventListener('click', closeQr);
-
-      document.addEventListener('keydown', (e)=>{
-        if(!overlay.classList.contains('open')) return;
-        if(e.key === 'Escape') closeQr();
-      });
-
-      qrOpen.addEventListener('click', ()=> openInNewTab(currentUrl));
-      qrCopy.addEventListener('click', async ()=> await copyText(currentUrl));
     })();
   </script>
 </body>

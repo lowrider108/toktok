@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="물가톡톡·산업톡톡을 한 곳에서 접속할 수 있는 안내 페이지입니다." />
-  <title>충청경제톡 | 톡톡시리즈</title>
+  <title>충청경제톡 | 관리용 주석 버전</title>
   <style>
     :root{
       --bg:#eef3fb;
@@ -41,7 +41,6 @@
     }
     a{ color:inherit; text-decoration:none; }
     button, input{ font-family:inherit; }
-
     .sr-only{
       position:absolute; width:1px; height:1px; padding:0; margin:-1px;
       overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
@@ -72,12 +71,7 @@
       justify-content:space-between;
       gap: 12px;
     }
-    .brand{
-      display:flex;
-      align-items:center;
-      gap: 12px;
-      min-width: 0;
-    }
+    .brand{ display:flex; align-items:center; gap: 12px; min-width: 0; }
     .mark{
       width:44px;height:44px;border-radius:16px;
       display:grid;place-items:center;
@@ -86,12 +80,7 @@
       box-shadow: 0 12px 24px rgba(37,99,235,.22);
       flex:none;
     }
-    .brand-text{
-      display:flex;
-      flex-direction:column;
-      line-height:1.2;
-      min-width:0;
-    }
+    .brand-text{ display:flex; flex-direction:column; line-height:1.2; min-width:0; }
     .org{
       font-size: 13px;
       color: var(--muted);
@@ -108,23 +97,12 @@
       text-overflow:ellipsis;
     }
     .header-actions{
-      display:flex;
-      align-items:center;
-      gap: 10px;
-      color: var(--muted);
-      font-size: 13px;
-      white-space:nowrap;
-      flex-wrap:wrap;
-      justify-content:flex-end;
+      display:flex; align-items:center; gap: 10px; color: var(--muted);
+      font-size: 13px; white-space:nowrap; flex-wrap:wrap; justify-content:flex-end;
     }
     .pill{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding: 9px 11px;
-      border:1px solid var(--line);
-      border-radius: 999px;
-      background:#fff;
+      display:inline-flex; align-items:center; gap:8px; padding: 9px 11px;
+      border:1px solid var(--line); border-radius: 999px; background:#fff;
       box-shadow: 0 6px 16px rgba(0,0,0,.04);
     }
     .pill .dot{
@@ -133,17 +111,10 @@
       box-shadow: 0 0 0 4px rgba(22,163,74,.12);
     }
 
-    main{
-      width: min(var(--max), calc(100% - 24px));
-      margin: 0 auto;
-      padding: 26px 0 42px;
-    }
+    main{ width: min(var(--max), calc(100% - 24px)); margin: 0 auto; padding: 26px 0 42px; }
 
     .hero{
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 18px;
-      align-items:stretch;
+      display:grid; grid-template-columns: 1.1fr .9fr; gap: 18px; align-items:stretch;
     }
     @media (max-width: 920px){
       .hero{ grid-template-columns:1fr; }
@@ -153,133 +124,59 @@
     .hero-main{
       background: linear-gradient(135deg, rgba(37,99,235,.08), rgba(255,255,255,.72));
       border:1px solid rgba(229,231,235,.9);
-      border-radius: 28px;
-      padding: 24px;
-      box-shadow: var(--shadow2);
+      border-radius: 28px; padding: 24px; box-shadow: var(--shadow2);
     }
     .eyebrow{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      background: rgba(37,99,235,.08);
-      color:#0f3b9f;
+      display:inline-flex; align-items:center; gap:8px;
+      background: rgba(37,99,235,.08); color:#0f3b9f;
       border:1px solid rgba(37,99,235,.12);
-      border-radius:999px;
-      padding: 9px 12px;
-      font-size:13px;
-      font-weight:900;
+      border-radius:999px; padding: 9px 12px; font-size:13px; font-weight:900;
     }
     .eyebrow .dot{
       width:10px;height:10px;border-radius:50%;
       background: var(--ok);
       box-shadow: 0 0 0 4px rgba(22,163,74,.10);
     }
-    .hero h1{
-      margin: 14px 0 8px;
-      font-size: clamp(28px, 4vw, 42px);
-      letter-spacing: -1px;
-      line-height: 1.12;
-    }
-    .hero p{
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.75;
-      font-size: 15px;
-    }
+    .hero h1{ margin: 14px 0 8px; font-size: clamp(28px, 4vw, 42px); letter-spacing: -1px; line-height: 1.12; }
+    .hero p{ margin: 0; color: var(--muted); line-height: 1.75; font-size: 15px; }
     .hero-search{
-      margin-top: 18px;
-      background:#fff;
-      border:1px solid var(--line);
-      border-radius: 20px;
-      padding: 12px;
-      box-shadow: 0 10px 24px rgba(0,0,0,.05);
+      margin-top: 18px; background:#fff; border:1px solid var(--line);
+      border-radius: 20px; padding: 12px; box-shadow: 0 10px 24px rgba(0,0,0,.05);
     }
-    .search-row{
-      display:flex;
-      gap:10px;
-    }
+    .search-row{ display:flex; gap:10px; }
     .hero-input{
-      flex:1;
-      min-width:0;
-      height:54px;
-      padding: 0 15px;
-      border-radius: 14px;
-      border:1px solid var(--line);
-      background:#fff;
-      font-size: 14px;
+      flex:1; min-width:0; height:54px; padding: 0 15px; border-radius: 14px;
+      border:1px solid var(--line); background:#fff; font-size: 14px;
     }
     .hero-btn{
-      height:54px;
-      border:0;
-      border-radius: 14px;
+      height:54px; border:0; border-radius: 14px;
       background: linear-gradient(135deg, var(--accent), var(--accent2));
-      color:#fff;
-      font-weight: 900;
-      padding: 0 18px;
-      cursor:pointer;
+      color:#fff; font-weight: 900; padding: 0 18px; cursor:pointer;
       box-shadow: 0 12px 24px rgba(37,99,235,.22);
     }
-    .chips{
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-      margin-top: 10px;
-    }
+    .chips{ display:flex; flex-wrap:wrap; gap:8px; margin-top: 10px; }
     .chip{
-      border:1px solid var(--line);
-      background: #fff;
-      color:#1f2937;
-      border-radius:999px;
-      padding: 10px 12px;
-      font-size:13px;
-      font-weight:800;
-      cursor:pointer;
+      border:1px solid var(--line); background: #fff; color:#1f2937;
+      border-radius:999px; padding: 10px 12px; font-size:13px; font-weight:800; cursor:pointer;
     }
     .chip:hover{ background: rgba(37,99,235,.05); border-color: rgba(37,99,235,.18); }
 
-    .hero-side{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap: 14px;
-    }
+    .hero-side{ display:grid; grid-template-columns:1fr 1fr; gap: 14px; }
     @media (max-width: 560px){
       .hero-side{ grid-template-columns:1fr; }
       .search-row{ flex-direction:column; }
       .hero-btn, .hero-input{ width:100%; }
     }
     .metric-card{
-      background: #fff;
-      border:1px solid var(--line);
-      border-radius: 24px;
-      padding: 18px;
-      box-shadow: var(--shadow);
+      background: #fff; border:1px solid var(--line); border-radius: 24px;
+      padding: 18px; box-shadow: var(--shadow);
     }
-    .metric-card h3{
-      margin:0;
-      font-size:14px;
-      color:#334155;
-    }
-    .big{
-      margin:8px 0 6px;
-      font-weight:900;
-      font-size: 32px;
-      letter-spacing:-1px;
-    }
-    .sub{
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.6;
-    }
-    .mini-bars{
-      display:flex;
-      gap:8px;
-      align-items:flex-end;
-      height:72px;
-      margin-top:12px;
-    }
+    .metric-card h3{ margin:0; font-size:14px; color:#334155; }
+    .big{ margin:8px 0 6px; font-weight:900; font-size: 32px; letter-spacing:-1px; }
+    .sub{ color:var(--muted); font-size:13px; line-height:1.6; }
+    .mini-bars{ display:flex; gap:8px; align-items:flex-end; height:72px; margin-top:12px; }
     .mini-bars span{
-      flex:1;
-      border-radius: 12px 12px 8px 8px;
+      flex:1; border-radius: 12px 12px 8px 8px;
       background: linear-gradient(180deg, rgba(37,99,235,.92), rgba(37,99,235,.18));
     }
     .mini-bars span:nth-child(1){ height:46%; }
@@ -288,234 +185,71 @@
     .mini-bars span:nth-child(4){ height:64%; }
     .mini-bars span:nth-child(5){ height:88%; }
 
-    .notice{
-      margin-top: 14px;
-      display:flex;
-      gap: 10px;
-      flex-wrap:wrap;
-      align-items:center;
-    }
+    .notice{ margin-top: 14px; display:flex; gap: 10px; flex-wrap:wrap; align-items:center; }
     .notice .mini{
-      font-size: 13px;
-      color: var(--muted);
-      border: 1px dashed var(--line);
-      background: rgba(255,255,255,.8);
-      padding: 10px 12px;
-      border-radius: 14px;
-      line-height: 1.6;
+      font-size: 13px; color: var(--muted); border: 1px dashed var(--line);
+      background: rgba(255,255,255,.8); padding: 10px 12px; border-radius: 14px; line-height: 1.6;
     }
 
-    .section-head{
-      margin-top: 18px;
-      display:flex;
-      justify-content:space-between;
-      align-items:end;
-      gap:12px;
-    }
-    .section-head h2{
-      margin:0;
-      font-size: 24px;
-      letter-spacing:-.6px;
-    }
-    .section-head p{
-      margin:4px 0 0;
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.7;
-    }
+    .section-head{ margin-top: 18px; display:flex; justify-content:space-between; align-items:end; gap:12px; }
+    .section-head h2{ margin:0; font-size: 24px; letter-spacing:-.6px; }
+    .section-head p{ margin:4px 0 0; color:var(--muted); font-size:14px; line-height:1.7; }
 
-    .grid{
-      margin-top: 16px;
-      display:grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
-    }
-    @media (max-width: 860px){
-      .grid{ grid-template-columns: 1fr; }
-    }
+    .grid{ margin-top: 16px; display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    @media (max-width: 860px){ .grid{ grid-template-columns: 1fr; } }
     .service{
-      position: relative;
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius2);
-      padding: 18px;
-      box-shadow: var(--shadow);
-      transition: transform .12s ease, box-shadow .12s ease;
-      overflow:hidden;
-      cursor:pointer;
+      position: relative; background: var(--card); border: 1px solid var(--line);
+      border-radius: var(--radius2); padding: 18px; box-shadow: var(--shadow);
+      transition: transform .12s ease, box-shadow .12s ease; overflow:hidden; cursor:pointer;
     }
-    .service:hover{
-      transform: translateY(-2px);
-      box-shadow: 0 16px 40px rgba(0,0,0,.11);
-    }
+    .service:hover{ transform: translateY(-2px); box-shadow: 0 16px 40px rgba(0,0,0,.11); }
     .service::after{
-      content:"";
-      position:absolute;
-      right:-48px;
-      bottom:-48px;
-      width:160px;height:160px;border-radius:50%;
-      background: radial-gradient(circle, rgba(37,99,235,.12), transparent 64%);
-      pointer-events:none;
+      content:""; position:absolute; right:-48px; bottom:-48px; width:160px;height:160px;border-radius:50%;
+      background: radial-gradient(circle, rgba(37,99,235,.12), transparent 64%); pointer-events:none;
     }
-
-    .tagrow{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 10px;
-      margin-bottom: 8px;
-    }
+    .tagrow{ display:flex; align-items:center; justify-content:space-between; gap: 10px; margin-bottom: 8px; }
     .tag{
-      display:inline-flex;
-      align-items:center;
-      gap: 8px;
-      border: 1px solid var(--line);
-      background: rgba(37,99,235,.06);
-      padding: 7px 10px;
-      border-radius: 999px;
-      font-size: 12px;
-      color: #1f2937;
-      white-space:nowrap;
+      display:inline-flex; align-items:center; gap: 8px; border: 1px solid var(--line);
+      background: rgba(37,99,235,.06); padding: 7px 10px; border-radius: 999px;
+      font-size: 12px; color: #1f2937; white-space:nowrap;
     }
     .tag .dot{
-      width:10px;
-      height:10px;
-      border-radius:50%;
-      background: var(--ok);
+      width:10px; height:10px; border-radius:50%; background: var(--ok);
       box-shadow: 0 0 0 4px rgba(22,163,74,.12);
     }
-    .service-title{
-      font-size: 28px;
-      font-weight: 900;
-      margin-top: 4px;
-      letter-spacing: -0.9px;
-    }
-    .titlebtn{
-      background: transparent;
-      border: 0;
-      padding: 0;
-      text-align: left;
-      width: 100%;
-      cursor: pointer;
-    }
-    .service-desc{
-      margin-top: 10px;
-      color: var(--muted);
-      line-height: 1.7;
-      font-size: 14px;
-      min-height: 48px;
-    }
-    .service-points{
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-      margin-top: 12px;
-    }
+    .service-title{ font-size: 28px; font-weight: 900; margin-top: 4px; letter-spacing: -0.9px; }
+    .titlebtn{ background: transparent; border: 0; padding: 0; text-align: left; width: 100%; cursor: pointer; }
+    .service-desc{ margin-top: 10px; color: var(--muted); line-height: 1.7; font-size: 14px; min-height: 48px; }
+    .service-points{ display:flex; flex-wrap:wrap; gap:8px; margin-top: 12px; }
     .service-points span{
-      border:1px solid var(--line);
-      background:#fff;
-      border-radius:999px;
-      padding:8px 10px;
-      font-size:12px;
-      font-weight:800;
-      color:#334155;
+      border:1px solid var(--line); background:#fff; border-radius:999px; padding:8px 10px;
+      font-size:12px; font-weight:800; color:#334155;
     }
-
     .actions{
-      margin-top: 14px;
-      display:flex;
-      gap: 10px;
-      flex-wrap:wrap;
-      align-items:center;
-      justify-content:space-between;
-      border-top: 1px dashed var(--line);
-      padding-top: 14px;
+      margin-top: 14px; display:flex; gap: 10px; flex-wrap:wrap; align-items:center;
+      justify-content:space-between; border-top: 1px dashed var(--line); padding-top: 14px;
     }
-    .btnrow{
-      display:flex;
-      gap: 8px;
-      flex-wrap:wrap;
-      align-items:center;
-    }
+    .btnrow{ display:flex; gap: 8px; flex-wrap:wrap; align-items:center; }
     .btn{
-      border: 1px solid var(--line);
-      background: #fff;
-      color: #111827;
-      padding: 10px 12px;
-      border-radius: 14px;
-      font-weight: 800;
-      font-size: 13px;
-      cursor:pointer;
-      transition: transform .12s ease, border-color .12s ease, background .12s ease;
-      user-select:none;
+      border: 1px solid var(--line); background: #fff; color: #111827; padding: 10px 12px;
+      border-radius: 14px; font-weight: 800; font-size: 13px; cursor:pointer;
+      transition: transform .12s ease, border-color .12s ease, background .12s ease; user-select:none;
     }
-    .btn:hover{
-      transform: translateY(-1px);
-      border-color: rgba(37,99,235,.45);
-      background: rgba(37,99,235,.05);
-    }
-    .btn.primary{
-      border-color: rgba(37,99,235,.20);
-      background: rgba(37,99,235,.10);
-      color: #0b2c7a;
-    }
-    .hint{
-      font-size: 12px;
-      color: var(--muted);
-      display:flex;
-      align-items:center;
-      gap: 8px;
-      flex-wrap:wrap;
-    }
-    .kbd{
-      font-size: 11px;
-      border: 1px solid var(--line);
-      padding: 3px 7px;
-      border-radius: 9px;
-      background:#fff;
-      color:#374151;
-    }
+    .btn:hover{ transform: translateY(-1px); border-color: rgba(37,99,235,.45); background: rgba(37,99,235,.05); }
+    .btn.primary{ border-color: rgba(37,99,235,.20); background: rgba(37,99,235,.10); color: #0b2c7a; }
+    .hint{ font-size: 12px; color: var(--muted); display:flex; align-items:center; gap: 8px; flex-wrap:wrap; }
 
-    .highlight{
-      margin-top: 16px;
-      display:grid;
-      grid-template-columns: 1.1fr .9fr .9fr;
-      gap:16px;
-    }
-    @media (max-width: 980px){
-      .highlight{ grid-template-columns:1fr; }
-    }
-
+    .highlight{ margin-top: 16px; display:grid; grid-template-columns: 1.1fr .9fr .9fr; gap:16px; }
+    @media (max-width: 980px){ .highlight{ grid-template-columns:1fr; } }
     .panel{
-      background:#fff;
-      border:1px solid var(--line);
-      border-radius: var(--radius2);
-      box-shadow: var(--shadow);
-      padding: 16px;
+      background:#fff; border:1px solid var(--line); border-radius: var(--radius2);
+      box-shadow: var(--shadow); padding: 16px;
     }
-    .panel h3{
-      margin:0 0 10px;
-      font-size:18px;
-      letter-spacing:-.3px;
-    }
-    .chart{
-      display:flex;
-      gap:12px;
-      align-items:flex-end;
-      height:180px;
-      margin-top: 10px;
-    }
-    .chart .col{
-      flex:1;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:8px;
-    }
+    .panel h3{ margin:0 0 10px; font-size:18px; letter-spacing:-.3px; }
+    .chart{ display:flex; gap:12px; align-items:flex-end; height:180px; margin-top: 10px; }
+    .chart .col{ flex:1; display:flex; flex-direction:column; align-items:center; gap:8px; }
     .chart .stick{
-      width:100%;
-      max-width:44px;
-      border-radius:14px 14px 8px 8px;
+      width:100%; max-width:44px; border-radius:14px 14px 8px 8px;
       background: linear-gradient(180deg, rgba(22,163,74,.92), rgba(22,163,74,.16));
     }
     .chart .col:nth-child(1) .stick{ height:54%; }
@@ -526,12 +260,8 @@
     .chart .label{ font-size:12px; color:var(--muted); }
 
     .metric{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:12px;
-      padding: 12px 0;
-      border-bottom:1px solid var(--line);
+      display:flex; justify-content:space-between; align-items:center; gap:12px;
+      padding: 12px 0; border-bottom:1px solid var(--line);
     }
     .metric:last-child{ border-bottom:0; padding-bottom:0; }
     .metric strong{ font-size:15px; }
@@ -539,164 +269,60 @@
     .up{ color:#16a34a; font-weight:900; }
     .down{ color:#dc2626; font-weight:900; }
 
-    .quick{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-bottom: 12px;
-    }
+    .quick{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom: 12px; }
     .qbtn{
-      appearance:none;
-      border:1px solid var(--line);
-      background: #fff;
-      border-radius: 999px;
-      padding: 10px 12px;
-      font-weight: 800;
-      font-size: 14px;
-      cursor: pointer;
+      appearance:none; border:1px solid var(--line); background: #fff; border-radius: 999px;
+      padding: 10px 12px; font-weight: 800; font-size: 14px; cursor: pointer;
       box-shadow: 0 6px 18px rgba(0,0,0,.06);
     }
     .qbtn:hover{ border-color: rgba(37,99,235,.35); }
     .qbtn.ghost{ background: rgba(37,99,235,.06); border-color: rgba(37,99,235,.18); }
 
-    .chatwrap{
-      margin-top: 6px;
-      border-top: 1px solid var(--line);
-      padding-top: 12px;
-    }
+    .chatwrap{ margin-top: 6px; border-top: 1px solid var(--line); padding-top: 12px; }
     .chatlog{
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      min-height: 84px;
-      max-height: 360px;
-      overflow:auto;
-      padding: 6px 2px 10px;
+      display:flex; flex-direction:column; gap:10px; min-height: 84px; max-height: 360px;
+      overflow:auto; padding: 6px 2px 10px;
     }
     .bubble{
-      max-width: 92%;
-      padding: 10px 12px;
-      border-radius: 16px;
-      border: 1px solid var(--line);
-      background: #fff;
-      line-height: 1.55;
-      white-space: pre-wrap;
-      word-break: break-word;
+      max-width: 92%; padding: 10px 12px; border-radius: 16px; border: 1px solid var(--line);
+      background: #fff; line-height: 1.55; white-space: pre-wrap; word-break: break-word;
     }
-    .bubble.user{
-      margin-left:auto;
-      background: rgba(37,99,235,.08);
-      border-color: rgba(37,99,235,.20);
-    }
-    .bubble.assistant{
-      margin-right:auto;
-    }
-    .bubble .meta{
-      display:block;
-      font-size: 12px;
-      color: var(--muted);
-      margin-bottom: 6px;
-      font-weight: 700;
-      letter-spacing: -.2px;
-    }
-    .chatform{
-      display:flex;
-      gap:10px;
-      margin-top: 10px;
-    }
+    .bubble.user{ margin-left:auto; background: rgba(37,99,235,.08); border-color: rgba(37,99,235,.20); }
+    .bubble.assistant{ margin-right:auto; }
+    .bubble .meta{ display:block; font-size: 12px; color: var(--muted); margin-bottom: 6px; font-weight: 700; letter-spacing: -.2px; }
+    .chatform{ display:flex; gap:10px; margin-top: 10px; }
     .chatin{
-      flex:1;
-      border:1px solid var(--line);
-      border-radius: 14px;
-      padding: 12px 12px;
-      font-size: 14px;
-      outline: none;
-      background: #fff;
-      min-width:0;
+      flex:1; border:1px solid var(--line); border-radius: 14px; padding: 12px 12px;
+      font-size: 14px; outline: none; background: #fff; min-width:0;
     }
     .send{
-      border: 1px solid rgba(37,99,235,.25);
-      background: var(--accent);
-      color:#fff;
-      border-radius: 14px;
-      padding: 12px 14px;
-      font-weight: 900;
-      cursor:pointer;
+      border: 1px solid rgba(37,99,235,.25); background: var(--accent); color:#fff;
+      border-radius: 14px; padding: 12px 14px; font-weight: 900; cursor:pointer;
     }
     .send:disabled{ opacity: .55; cursor: not-allowed; }
-    @media (max-width: 560px){
-      .chatform{ flex-direction:column; }
-    }
+    @media (max-width: 560px){ .chatform{ flex-direction:column; } }
 
-    .info{
-      margin-top: 18px;
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 16px;
-    }
-    @media (max-width: 860px){
-      .info{ grid-template-columns: 1fr; }
-    }
-    details{
-      border:1px solid var(--line);
-      border-radius: 16px;
-      padding: 12px 12px;
-      background: rgba(244,246,251,.45);
-    }
+    .info{ margin-top: 18px; display:grid; grid-template-columns: 1.2fr .8fr; gap: 16px; }
+    @media (max-width: 860px){ .info{ grid-template-columns: 1fr; } }
+    details{ border:1px solid var(--line); border-radius: 16px; padding: 12px 12px; background: rgba(244,246,251,.45); }
     details + details{ margin-top: 10px; }
-    summary{
-      cursor:pointer;
-      font-weight: 900;
-      list-style: none;
-    }
+    summary{ cursor:pointer; font-weight: 900; list-style: none; }
     summary::-webkit-details-marker{ display:none; }
-    .faq-body{
-      margin-top: 10px;
-      color: var(--muted);
-      line-height: 1.7;
-      font-size: 14px;
-    }
-    .bullets{
-      margin: 0;
-      padding-left: 18px;
-    }
+    .faq-body{ margin-top: 10px; color: var(--muted); line-height: 1.7; font-size: 14px; }
+    .bullets{ margin: 0; padding-left: 18px; }
     .bullets li{ margin: 6px 0; }
 
-    footer{
-      border-top: 1px solid var(--line);
-      background: rgba(255,255,255,.88);
-    }
+    footer{ border-top: 1px solid var(--line); background: rgba(255,255,255,.88); }
     .footer-inner{
-      width: min(var(--max), calc(100% - 24px));
-      margin: 0 auto;
-      padding: 18px 0;
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.6;
-      display:flex;
-      flex-wrap:wrap;
-      gap: 8px 14px;
-      justify-content:space-between;
+      width: min(var(--max), calc(100% - 24px)); margin: 0 auto; padding: 18px 0; color: var(--muted);
+      font-size: 12px; line-height: 1.6; display:flex; flex-wrap:wrap; gap: 8px 14px; justify-content:space-between;
     }
     .toast{
-      position: fixed;
-      left: 50%;
-      bottom: 18px;
-      transform: translateX(-50%) translateY(20px);
-      background: rgba(17,24,39,.92);
-      color: #fff;
-      border-radius: 999px;
-      padding: 10px 14px;
-      font-size: 13px;
-      opacity: 0;
-      pointer-events:none;
-      transition: opacity .16s ease, transform .16s ease;
-      z-index: 60;
+      position: fixed; left: 50%; bottom: 18px; transform: translateX(-50%) translateY(20px);
+      background: rgba(17,24,39,.92); color: #fff; border-radius: 999px; padding: 10px 14px;
+      font-size: 13px; opacity: 0; pointer-events:none; transition: opacity .16s ease, transform .16s ease; z-index: 60;
     }
-    .toast.show{
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
-    }
+    .toast.show{ opacity: 1; transform: translateX(-50%) translateY(0); }
   </style>
 </head>
 
@@ -729,12 +355,17 @@
           <b>여기서 보기</b>는 이 페이지에서 바로 질문/답변을 보여주고, <b>GPT에서 보기</b>는 <b>ChatGPT</b>에서 새 창으로 열립니다.
         </p>
 
+        <!-- 관리 포인트 A: 첫 화면 질문창 -->
+        <!-- 사용자가 직접 입력하면 아래 JS가 물가/산업 키워드를 보고 알맞은 패널을 열어줍니다 -->
         <div class="hero-search">
           <div class="search-row">
             <label class="sr-only" for="heroInput">질문 입력</label>
             <input id="heroInput" class="hero-input" type="text" placeholder="예: 이번달 충청북도 물가동향 핵심만 알려줘" />
             <button id="heroAsk" class="hero-btn" type="button">질문 시작하기</button>
           </div>
+
+          <!-- 관리 포인트 B: 추천 질문 -->
+          <!-- 여기 문구는 자유롭게 바꿔도 됩니다. data-hero-target 값은 mulga 또는 saneob 이어야 합니다 -->
           <div class="chips" aria-label="추천 질문">
             <button class="chip" type="button" data-hero-target="mulga" data-text="이번달 충청지역 소비자물가동향을 핵심만 5줄로 요약해줘.">이번 달 물가 요약</button>
             <button class="chip" type="button" data-hero-target="mulga" data-text="채소 값은 왜 올랐어? 생활물가 중심으로 쉽게 설명해줘.">채소 값이 왜 올랐어?</button>
@@ -751,26 +382,37 @@
       </div>
 
       <div class="hero-side">
+        <!-- 관리 포인트 C: 이번 달 한눈에 보기 -->
+        <!-- 매달 발표 후 이 숫자와 설명만 바꾸면 됩니다 -->
         <div class="metric-card">
           <h3>이번 달 한눈에 보기</h3>
-          <div class="big">+2.8%</div>
-          <div class="sub">소비자물가 예시 수치 영역입니다. 실제 발표값을 여기에 붙이면 첫 화면이 훨씬 살아납니다.</div>
+          <div class="big">대전+2.0%</div>
+          <div class="sub">대전+2.0%, 세종 +2.0%, 충남 +1.6%, 충북 +2.0%</div>
           <div class="mini-bars" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
         </div>
+
+        <!-- 관리 포인트 D: 바로 써보기 -->
+        <!-- 디자인용 안내 카드입니다. 굳이 매달 수정 안 해도 됩니다 -->
         <div class="metric-card">
           <h3>바로 써보기</h3>
           <div class="big" style="font-size:28px">물가 · 산업</div>
-          <div class="sub">무엇을 눌러야 할지 바로 보이도록 서비스 카드와 질문 버튼을 크게 구성했습니다.</div>
+          <div class="sub">자세한 내용은 "여기서보기" 또는 "gpt에서 보기"를 눌러주세요</div>
         </div>
+
+        <!-- 관리 포인트 E: 주요 흐름 -->
+        <!-- 산업월보 확인 후 '생산 ↑ · 소비 보합 · 투자 ↓' 같은 식으로 바꾸면 좋습니다 -->
         <div class="metric-card">
           <h3>주요 흐름</h3>
-          <div class="big" style="font-size:24px">생산 · 소비 · 투자</div>
-          <div class="sub">산업동향은 핵심 지표 중심으로 짧고 명확하게 확인할 수 있습니다.</div>
+          <div class="big" style="font-size:24px">생산 · 소비 · 재고</div>
+          <div class="sub">광공업 생산은 증가, 소매판매는 감소, 재고는 감소 흐름</div>
         </div>
+
+        <!-- 관리 포인트 F: 이용 대상 -->
+        <!-- 거의 고정 문구로 써도 됩니다 -->
         <div class="metric-card">
           <h3>이용 대상</h3>
-          <div class="big" style="font-size:24px">시민 · 직원 · 학생</div>
-          <div class="sub">일반 시민, 내부 업무담당자, 교육 현장까지 두루 활용하기 좋게 설계했습니다.</div>
+          <div class="big" style="font-size:24px">충청도민</div>
+          <div class="sub">충청도민 누구나 쉽게 사용하세요</div>
         </div>
       </div>
     </section>
@@ -783,6 +425,8 @@
     </div>
 
     <div class="grid" aria-label="서비스 목록">
+      <!-- 관리 포인트 G: 물가톡톡 링크 -->
+      <!-- data-url 값을 나중에 바꾸면 GPT 바로가기 링크도 함께 바뀝니다 -->
       <article class="service" data-title="물가톡톡" data-url="https://chatgpt.com/g/g-68a662e8746481919c6a46fa6e52d958-cungceongjiyeog-sobijamulgadonghyang-caesbos-mulgatogtog" tabindex="0" role="link" aria-label="물가톡톡 열기">
         <div class="tagrow">
           <div class="tag"><span class="dot" aria-hidden="true"></span>운영 중</div>
@@ -810,6 +454,7 @@
         </div>
       </article>
 
+      <!-- 관리 포인트 H: 산업톡톡 링크 -->
       <article class="service" data-title="산업톡톡" data-url="https://chatgpt.com/g/g-68c3694b46a0819180e441a1ace740cd-cungceongjiyeog-saneobhwaldongdonghyang-caesbos-saneobtogtog" tabindex="0" role="link" aria-label="산업톡톡 열기">
         <div class="tagrow">
           <div class="tag"><span class="dot" aria-hidden="true"></span>운영 중</div>
@@ -839,6 +484,8 @@
     </div>
 
     <section class="highlight" aria-label="한눈에 보는 영역">
+      <!-- 관리 포인트 I: 한눈에 보는 물가 흐름 -->
+      <!-- 막대 높이는 CSS 샘플입니다. 실제 수치 자동연동은 아님 -->
       <article class="panel">
         <h3>한눈에 보는 물가 흐름</h3>
         <div class="sub">실제 수치를 붙이면 더 강해질 영역입니다. 지금은 첫 화면용 샘플 그래프를 배치했습니다.</div>
@@ -851,6 +498,8 @@
         </div>
       </article>
 
+      <!-- 관리 포인트 J: 이번 달 빠른 체크 -->
+      <!-- 발표 후 수치 3개만 바꾸면 메인 화면이 살아납니다 -->
       <article class="panel">
         <h3>이번 달 빠른 체크</h3>
         <div class="metric"><div><strong>소비자물가</strong><small>전년동월비 예시</small></div><div class="up">▲ 2.8%</div></div>
@@ -866,6 +515,8 @@
       </article>
     </section>
 
+    <!-- 관리 포인트 K: 물가톡톡 페이지 내 질문 -->
+    <!-- data-q 버튼 문구, 프롬프트, placeholder는 자유롭게 수정 가능 -->
     <section id="mulgatalk" class="panel" aria-label="물가톡톡 빠른 질문" style="display:none; margin-top:16px;">
       <h3>물가톡톡 빠른 질문</h3>
       <p class="sub" style="margin:0 0 12px;">
@@ -895,6 +546,7 @@
       </div>
     </section>
 
+    <!-- 관리 포인트 L: 산업톡톡 페이지 내 질문 -->
     <section id="saneobtalk" class="panel" aria-label="산업톡톡 빠른 질문" style="display:none; margin-top:16px;">
       <h3>산업톡톡 빠른 질문</h3>
       <p class="sub" style="margin:0 0 12px;">
@@ -964,7 +616,7 @@
             <li>이 페이지는 <b>서비스 접속</b>을 위한 안내 페이지입니다.</li>
             <li>연결된 챗봇은 외부 서비스(ChatGPT) 또는 내부 서버 API를 통해 동작합니다.</li>
             <li>접속이 원활하지 않다면 브라우저를 새로고침하거나 잠시 후 다시 시도해 주세요.</li>
-            <li>서버 루트 설정이 현재 파일명과 다르면 메인 페이지가 안 뜰 수 있으니 배포 전 확인해 주세요.</li>
+            <li><b>중요:</b> 서버의 루트 파일명이 다르면 첫 화면이 안 뜰 수 있습니다.</li>
           </ul>
         </div>
       </aside>
@@ -1020,12 +672,12 @@
 
       const heroInput = document.getElementById('heroInput');
       const heroAsk = document.getElementById('heroAsk');
-
       const mulgaSection = document.getElementById('mulgatalk');
       const saneobSection = document.getElementById('saneobtalk');
 
       function showMulgaPanel(){
         mulgaSection.style.display = 'block';
+        saneobSection.style.display = saneobSection.style.display || 'none';
         if(!chatLog.dataset.welcomed){
           appendBubble('assistant', '원하시는 버튼을 눌러 보세요. 바로 요약해 드릴게요 🙂');
           chatLog.dataset.welcomed = '1';
@@ -1035,6 +687,7 @@
 
       function showSaneobPanel(){
         saneobSection.style.display = 'block';
+        mulgaSection.style.display = mulgaSection.style.display || 'none';
         if(!chatLog2.dataset.welcomed){
           appendBubble2('assistant', '원하시는 버튼을 눌러 보세요. 산업동향을 쉽게 정리해 드릴게요 🙂');
           chatLog2.dataset.welcomed = '1';
@@ -1092,7 +745,6 @@
       function appendBubble(role, text){
         const div = document.createElement('div');
         div.className = 'bubble ' + (role === 'user' ? 'user' : 'assistant');
-
         const meta = document.createElement('span');
         meta.className = 'meta';
         meta.textContent = role === 'user' ? '나' : '물가톡톡';
@@ -1118,7 +770,6 @@
       async function sendUserMessage(text){
         const q = (text || '').trim();
         if(!q) return;
-
         appendBubble('user', q);
         convo.push({role:'user', content:q});
         chatSend.disabled = true;
@@ -1166,10 +817,7 @@
       mulgaSection?.querySelectorAll('[data-q]').forEach(btn => {
         btn.addEventListener('click', () => {
           const kind = btn.getAttribute('data-q');
-          if(kind === 'free'){
-            chatInput.focus();
-            return;
-          }
+          if(kind === 'free'){ chatInput.focus(); return; }
           const promptMap = {
             summary: '이번달 충청지역 소비자물가동향을 핵심만 5줄로 요약해줘. 전년동월비와 전월비를 구분해서 설명해줘.',
             col: '이번달 생활물가지수 흐름을 핵심만 요약해줘. 생활 밀접 품목 예시를 3개 들어줘.',
@@ -1201,7 +849,6 @@
       function appendBubble2(role, text){
         const div = document.createElement('div');
         div.className = 'bubble ' + (role === 'user' ? 'user' : 'assistant');
-
         const meta = document.createElement('span');
         meta.className = 'meta';
         meta.textContent = role === 'user' ? '나' : '산업톡톡';
@@ -1217,7 +864,6 @@
           headers: {'Content-Type':'application/json'},
           body: JSON.stringify({ messages })
         });
-
         if(!res.ok){
           const t = await res.text().catch(()=> '');
           throw new Error('API 오류 (' + res.status + '): ' + (t || '서버 응답 없음'));
@@ -1228,7 +874,6 @@
       async function sendUserMessage2(text){
         const q = (text || '').trim();
         if(!q) return;
-
         appendBubble2('user', q);
         convo2.push({role:'user', content:q});
         chatSend2.disabled = true;
@@ -1276,10 +921,7 @@
       saneobSection?.querySelectorAll('[data-q2]').forEach(btn => {
         btn.addEventListener('click', () => {
           const kind = btn.getAttribute('data-q2');
-          if(kind === 'free'){
-            chatInput2.focus();
-            return;
-          }
+          if(kind === 'free'){ chatInput2.focus(); return; }
           const promptMap = {
             summary: '이번달 충청지역 산업활동동향을 핵심만 5줄로 요약해줘. 생산·소비·투자 흐름 중심으로 설명해줘.',
             key: '이번달 충청지역 주요 지표(광공업 생산, 서비스업 생산, 소매판매, 설비투자, 건설기성)를 한 번에 이해할 수 있게 정리해줘.',

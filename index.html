@@ -323,6 +323,43 @@
       font-size: 13px; opacity: 0; pointer-events:none; transition: opacity .16s ease, transform .16s ease; z-index: 60;
     }
     .toast.show{ opacity: 1; transform: translateX(-50%) translateY(0); }
+  
+    /* Markdown rendering */
+    .bubble .md-content{font-size:14px; line-height:1.65; overflow-x:auto;}
+    .bubble .md-content p{margin:0 0 10px;}
+    .bubble .md-content p:last-child{margin-bottom:0;}
+    .bubble .md-content ul,
+    .bubble .md-content ol{margin:0 0 10px; padding-left:20px;}
+    .bubble .md-content li{margin:4px 0;}
+    .bubble .md-content strong{font-weight:800;}
+    .bubble .md-content code{background:#f3f4f6; padding:2px 5px; border-radius:6px; font-size:13px;}
+    .bubble .md-content pre{background:#111827; color:#fff; padding:12px; border-radius:12px; overflow:auto; font-size:13px;}
+    .bubble .md-content table{width:100%; border-collapse:collapse; margin:8px 0 4px; font-size:13px; min-width:520px; background:#fff;}
+    .bubble .md-content th,
+    .bubble .md-content td{border:1px solid #e5e7eb; padding:8px 10px; text-align:center; vertical-align:middle;}
+    .bubble .md-content th{background:#f8fafc; font-weight:800; color:#111827;}
+    .bubble .md-content tr:nth-child(even) td{background:#fcfcfd;}
+    .bubble .md-content blockquote{margin:8px 0; padding:8px 12px; border-left:4px solid #cbd5e1; background:#f8fafc; color:#475569;}
+
+    /* Mobile-friendly table cards */
+    @media (max-width: 640px){
+      .bubble .md-content table.mobile-card-table{min-width:0; border:0; display:block; background:transparent;}
+      .bubble .md-content table.mobile-card-table thead{display:none;}
+      .bubble .md-content table.mobile-card-table tbody{display:block;}
+      .bubble .md-content table.mobile-card-table tr{
+        display:block; margin:0 0 10px; border:1px solid var(--line); border-radius:14px; overflow:hidden;
+        background:#fff; box-shadow:0 4px 12px rgba(0,0,0,.04);
+      }
+      .bubble .md-content table.mobile-card-table td{
+        display:flex; justify-content:space-between; gap:12px; width:100%; border:0; border-bottom:1px solid #eef2f7;
+        padding:10px 12px; text-align:left; font-size:13px;
+      }
+      .bubble .md-content table.mobile-card-table td:last-child{border-bottom:0;}
+      .bubble .md-content table.mobile-card-table td::before{
+        content:attr(data-label); flex:0 0 88px; font-weight:800; color:#475569;
+      }
+    }
+
   </style>
 </head>
 
@@ -576,6 +613,34 @@
         window.open(url, '_blank', 'noopener,noreferrer');
       }
 
+
+      function renderMarkdownToHtml(text){
+        if(window.marked){
+          marked.setOptions({ breaks:true, gfm:true });
+          return marked.parse(text || '');
+        }
+        return String(text || '')
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/
+/g, '<br>');
+      }
+
+      function enhanceTables(container){
+        const tables = container.querySelectorAll('table');
+        tables.forEach(table => {
+          table.classList.add('mobile-card-table');
+          const headers = Array.from(table.querySelectorAll('thead th')).map(th => th.textContent.trim());
+          table.querySelectorAll('tbody tr').forEach(row => {
+            Array.from(row.children).forEach((cell, i) => {
+              const label = headers[i] || `항목 ${i+1}`;
+              cell.setAttribute('data-label', label);
+            });
+          });
+        });
+      }
+
       const heroInput = document.getElementById('heroInput');
       const heroAsk = document.getElementById('heroAsk');
       const mulgaSection = document.getElementById('mulgatalk');
@@ -655,7 +720,11 @@
         meta.className = 'meta';
         meta.textContent = role === 'user' ? '나' : '물가톡톡';
         div.appendChild(meta);
-        div.appendChild(document.createTextNode(text));
+        const content = document.createElement('div');
+        content.className = 'md-content';
+        content.innerHTML = renderMarkdownToHtml(text);
+        div.appendChild(content);
+        enhanceTables(content);
         chatLog.appendChild(div);
         chatLog.scrollTop = chatLog.scrollHeight;
       }
@@ -759,7 +828,11 @@
         meta.className = 'meta';
         meta.textContent = role === 'user' ? '나' : '산업톡톡';
         div.appendChild(meta);
-        div.appendChild(document.createTextNode(text));
+        const content = document.createElement('div');
+        content.className = 'md-content';
+        content.innerHTML = renderMarkdownToHtml(text);
+        div.appendChild(content);
+        enhanceTables(content);
         chatLog2.appendChild(div);
         chatLog2.scrollTop = chatLog2.scrollHeight;
       }
@@ -878,5 +951,6 @@
       });
     })();
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </body>
 </html>

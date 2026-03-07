@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="물가톡톡·산업톡톡을 한 곳에서 접속할 수 있는 안내 페이지입니다." />
-  <title>충청경제톡 | 관리용 주석 버전</title>
+  <title>충청경제톡</title>
   <style>
     :root{
       --bg:#eef3fb;
@@ -623,8 +623,7 @@
           .replace(/&/g, '&amp;')
           .replace(/</g, '&lt;')
           .replace(/>/g, '&gt;')
-          .replace(/
-/g, '<br>');
+          .replace(/\n/g, '<br>');
       }
 
       function enhanceTables(container){

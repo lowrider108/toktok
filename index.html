@@ -670,25 +670,27 @@
         });
       });
 
-      heroAsk.addEventListener('click', () => {
-        const q = (heroInput.value || '').trim();
-        if(!q){
-          showToast('질문을 입력해 주세요');
-          heroInput.focus();
-          return;
-        }
-        const isSaneob = /산업|생산|소비|투자|서비스업|광공업|재고|건설/.test(q);
-        if(isSaneob){
-          showSaneobPanel();
-          sendUserMessage2(q);
-        }else{
-          showMulgaPanel();
-          sendUserMessage(q);
-        }
-      });
-      heroInput.addEventListener('keydown', (e) => {
-        if(e.key === 'Enter') heroAsk.click();
-      });
+      if(heroAsk && heroInput){
+        heroAsk.addEventListener('click', () => {
+          const q = (heroInput.value || '').trim();
+          if(!q){
+            showToast('질문을 입력해 주세요');
+            heroInput.focus();
+            return;
+          }
+          const isSaneob = /산업|생산|소비|투자|서비스업|광공업|재고|건설/.test(q);
+          if(isSaneob){
+            showSaneobPanel();
+            sendUserMessage2(q);
+          }else{
+            showMulgaPanel();
+            sendUserMessage(q);
+          }
+        });
+        heroInput.addEventListener('keydown', (e) => {
+          if(e.key === 'Enter') heroAsk.click();
+        });
+      }
 
       const chatLog = document.getElementById('chatLog');
       const chatForm = document.getElementById('chatForm');

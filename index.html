@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="물가톡톡·산업톡톡을 한 곳에서 접속할 수 있는 안내 페이지입니다." />
-  <title>충청경제톡</title>
+  <title>충청통계톡</title>
   <style>
     :root{
       --bg:#eef3fb;
@@ -237,6 +237,8 @@
     }
     .btn:hover{ transform: translateY(-1px); border-color: rgba(37,99,235,.45); background: rgba(37,99,235,.05); }
     .btn.primary{ border-color: rgba(37,99,235,.20); background: rgba(37,99,235,.10); color: #0b2c7a; }
+    .btn.recommend{ border-color: rgba(37,99,235,.28); background: linear-gradient(135deg, rgba(37,99,235,.14), rgba(37,99,235,.08)); color: #0b2c7a; box-shadow: 0 10px 20px rgba(37,99,235,.10); }
+    .btn.recommend::after{ content:"추천"; display:inline-block; margin-left:6px; padding:2px 6px; border-radius:999px; background:#2563eb; color:#fff; font-size:11px; font-weight:900; vertical-align:middle; }
     .hint{ font-size: 12px; color: var(--muted); display:flex; align-items:center; gap: 8px; flex-wrap:wrap; }
 
     .highlight{ margin-top: 16px; display:grid; grid-template-columns: 1.1fr .9fr .9fr; gap:16px; }
@@ -370,7 +372,7 @@
         <div class="mark" aria-hidden="true">톡</div>
         <div class="brand-text">
           <div class="org">국가데이터처 충주사무소 · 대국민 안내</div>
-          <div class="site">충청경제톡 (톡톡시리즈)</div>
+          <div class="site">충청통계톡</div>
         </div>
       </div>
 
@@ -384,31 +386,12 @@
   <main>
     <section class="hero">
       <div class="hero-main">
-        <div class="eyebrow"><span class="dot" aria-hidden="true"></span>충청지역 경제통계를 대화형으로 안내합니다</div>
-        <h1>충청지역 경제를<br>한눈에, 더 쉽게</h1>
+        <div class="eyebrow"><span class="dot" aria-hidden="true"></span>충청지역 물가/산업통계를 대화형으로 안내합니다</div>
+        <h1>충청지역 통계를 한눈에, 더 쉽게</h1>
         <p>
           <b>물가톡톡</b>과 <b>산업톡톡</b>은 충청지역 통계를 더 쉽게 이해할 수 있도록 돕는 대화형 안내 서비스입니다.
           <b>여기서 보기</b>는 이 페이지에서 바로 질문/답변을 보여주고, <b>GPT에서 보기</b>는 <b>ChatGPT</b>에서 새 창으로 열립니다.
         </p>
-
-        <!-- 관리 포인트 A: 첫 화면 질문창 -->
-        <!-- 사용자가 직접 입력하면 아래 JS가 물가/산업 키워드를 보고 알맞은 패널을 열어줍니다 -->
-        <div class="hero-search">
-          <div class="search-row">
-            <label class="sr-only" for="heroInput">질문 입력</label>
-            <input id="heroInput" class="hero-input" type="text" placeholder="예: 이번달 충청북도 물가동향 핵심만 알려줘" />
-            <button id="heroAsk" class="hero-btn" type="button">질문 시작하기</button>
-          </div>
-
-          <!-- 관리 포인트 B: 추천 질문 -->
-          <!-- 여기 문구는 자유롭게 바꿔도 됩니다. data-hero-target 값은 mulga 또는 saneob 이어야 합니다 -->
-          <div class="chips" aria-label="추천 질문">
-            <button class="chip" type="button" data-hero-target="mulga" data-text="이번달 충청지역 소비자물가동향을 핵심만 5줄로 요약해줘.">이번 달 물가 요약</button>
-            <button class="chip" type="button" data-hero-target="mulga" data-text="채소 값은 왜 올랐어? 생활물가 중심으로 쉽게 설명해줘.">채소 값이 왜 올랐어?</button>
-            <button class="chip" type="button" data-hero-target="saneob" data-text="이번달 충청지역 산업활동동향을 생산·소비·투자 중심으로 요약해줘.">산업동향 요약</button>
-            <button class="chip" type="button" data-hero-target="mulga" data-text="생활물가지수와 소비자물가지수 차이를 쉽게 설명해줘.">생활물가지수 설명</button>
-          </div>
-        </div>
 
         <div class="notice" role="note" aria-label="이용 전 안내">
           <div class="mini"><b>로그인/접속</b><br/>"GPT에서 보기" 는 ChatGPT 로그인, 유/무료버전 상태에 따라 화면이 달라질 수 있어요.</div>
@@ -447,8 +430,8 @@
 
         <div class="actions">
           <div class="btnrow">
-            <button class="btn" type="button" data-local>여기서 보기</button>
-            <button class="btn primary" type="button" data-open>GPT에서 보기 →</button>
+            <button class="btn primary recommend" type="button" data-local>여기서 보기</button>
+            <button class="btn" type="button" data-open>GPT에서 보기 →</button>
             <button class="btn" type="button" data-copy>링크 복사</button>
           </div>
           <div class="hint">GPT는 새 탭으로 열립니다</div>
@@ -475,8 +458,8 @@
 
         <div class="actions">
           <div class="btnrow">
-            <button class="btn" type="button" data-local>여기서 보기</button>
-            <button class="btn primary" type="button" data-open>GPT에서 보기 →</button>
+            <button class="btn primary recommend" type="button" data-local>여기서 보기</button>
+            <button class="btn" type="button" data-open>GPT에서 보기 →</button>
             <button class="btn" type="button" data-copy>링크 복사</button>
           </div>
           <div class="hint">GPT는 새 탭으로 열립니다</div>
@@ -613,6 +596,12 @@
         window.open(url, '_blank', 'noopener,noreferrer');
       }
 
+      function dismissKeyboard(){
+        const active = document.activeElement;
+        if(active && typeof active.blur === 'function'){
+          active.blur();
+        }
+      }
 
       function renderMarkdownToHtml(text){
         if(window.marked){
@@ -646,6 +635,7 @@
       const saneobSection = document.getElementById('saneobtalk');
 
       function showMulgaPanel(){
+        dismissKeyboard();
         mulgaSection.style.display = 'block';
         saneobSection.style.display = saneobSection.style.display || 'none';
         if(!chatLog.dataset.welcomed){
@@ -656,6 +646,7 @@
       }
 
       function showSaneobPanel(){
+        dismissKeyboard();
         saneobSection.style.display = 'block';
         mulgaSection.style.display = mulgaSection.style.display || 'none';
         if(!chatLog2.dataset.welcomed){
@@ -742,6 +733,7 @@
       }
 
       async function sendUserMessage(text){
+        dismissKeyboard();
         const q = (text || '').trim();
         if(!q) return;
         appendBubble('user', q);
@@ -784,14 +776,14 @@
         }finally{
           chatSend.disabled = false;
           chatInput.disabled = false;
-          chatInput.focus();
+          dismissKeyboard();
         }
       }
 
       mulgaSection?.querySelectorAll('[data-q]').forEach(btn => {
         btn.addEventListener('click', () => {
           const kind = btn.getAttribute('data-q');
-          if(kind === 'free'){ chatInput.focus(); return; }
+          if(kind === 'free'){ dismissKeyboard(); return; }
           const promptMap = {
             summary: '이번달 충청지역 소비자물가동향을 핵심만 5줄로 요약해줘. 전년동월비와 전월비를 구분해서 설명해줘.',
             col: '이번달 생활물가지수 흐름을 핵심만 요약해줘. 생활 밀접 품목 예시를 3개 들어줘.',
@@ -850,6 +842,7 @@
       }
 
       async function sendUserMessage2(text){
+        dismissKeyboard();
         const q = (text || '').trim();
         if(!q) return;
         appendBubble2('user', q);
@@ -892,14 +885,14 @@
         }finally{
           chatSend2.disabled = false;
           chatInput2.disabled = false;
-          chatInput2.focus();
+          dismissKeyboard();
         }
       }
 
       saneobSection?.querySelectorAll('[data-q2]').forEach(btn => {
         btn.addEventListener('click', () => {
           const kind = btn.getAttribute('data-q2');
-          if(kind === 'free'){ chatInput2.focus(); return; }
+          if(kind === 'free'){ dismissKeyboard(); return; }
           const promptMap = {
             summary: '이번달 충청지역 산업활동동향을 핵심만 5줄로 요약해줘. 생산·소비·투자 흐름 중심으로 설명해줘.',
             key: '이번달 충청지역 주요 지표(광공업 생산, 서비스업 생산, 소매판매, 설비투자, 건설기성)를 한 번에 이해할 수 있게 정리해줘.',

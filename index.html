@@ -383,13 +383,27 @@
       backdrop-filter: blur(8px);
     }
     #appIntroSplash.hide .app-intro-card{
-      opacity:0;
-      transform:translateY(-10px) scale(.965);
-    }
+    width:min(96vw, 760px);
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:18px;
+    animation:introUp .55s ease;
+    transition:opacity .5s ease, transform .5s ease;
+    will-change:transform, opacity;
+  }
     #appIntroSplash.hide .app-intro-image{
-      transform:translateY(-6px) scale(.985);
-      filter:drop-shadow(0 10px 18px rgba(0,0,0,.05));
-    }
+    width:min(92vw, 720px);
+    max-width:720px;
+    height:auto;
+    display:block;
+    filter:drop-shadow(0 20px 28px rgba(0,0,0,.08));
+    border-radius:28px;
+    transition:transform .55s ease, filter .55s ease, opacity .45s ease;
+    animation:introFloat 2.1s ease-in-out infinite;
+    will-change:transform, opacity;
+  }
     .app-intro-card{
       width:min(92vw, 520px);
       text-align:center;

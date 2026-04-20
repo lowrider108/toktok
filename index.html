@@ -380,6 +380,15 @@
       opacity:0;
       visibility:hidden;
       pointer-events:none;
+      backdrop-filter: blur(8px);
+    }
+    #appIntroSplash.hide .app-intro-card{
+      opacity:0;
+      transform:translateY(-10px) scale(.965);
+    }
+    #appIntroSplash.hide .app-intro-image{
+      transform:translateY(-6px) scale(.985);
+      filter:drop-shadow(0 10px 18px rgba(0,0,0,.05));
     }
     .app-intro-card{
       width:min(92vw, 520px);
@@ -389,6 +398,8 @@
       align-items:center;
       gap:18px;
       animation:introUp .55s ease;
+      transition:opacity .5s ease, transform .5s ease;
+      will-change:transform, opacity;
     }
     .app-intro-image{
       width:min(72vw, 360px);
@@ -397,6 +408,9 @@
       display:block;
       filter:drop-shadow(0 20px 28px rgba(0,0,0,.08));
       border-radius:28px;
+      transition:transform .55s ease, filter .55s ease, opacity .45s ease;
+      animation:introFloat 2.1s ease-in-out infinite;
+      will-change:transform, opacity;
     }
     .app-intro-loading{
       display:inline-flex;
@@ -418,10 +432,19 @@
       background:#2563eb;
       box-shadow:14px 0 0 rgba(37,99,235,.55), 28px 0 0 rgba(37,99,235,.25);
       margin-right:28px;
+      animation:introDots 1.2s ease-in-out infinite;
     }
     @keyframes introUp{
       from{ transform:translateY(12px); opacity:0; }
       to{ transform:translateY(0); opacity:1; }
+    }
+    @keyframes introFloat{
+      0%, 100%{ transform:translateY(0); }
+      50%{ transform:translateY(-6px); }
+    }
+    @keyframes introDots{
+      0%, 100%{ opacity:.8; transform:translateX(0); }
+      50%{ opacity:1; transform:translateX(2px); }
     }
 
   </style>
@@ -635,20 +658,21 @@
 
       const introSplash = document.getElementById('appIntroSplash');
       function hideIntroSplash(){
-        if(!introSplash) return;
+        if(!introSplash || introSplash.dataset.hiding === '1') return;
+        introSplash.dataset.hiding = '1';
         introSplash.classList.add('hide');
         window.setTimeout(() => {
           if(introSplash && introSplash.parentNode){
             introSplash.parentNode.removeChild(introSplash);
           }
-        }, 500);
+        }, 650);
       }
 
       window.addEventListener('load', () => {
-        window.setTimeout(hideIntroSplash, 1700);
+        window.setTimeout(hideIntroSplash, 2300);
       });
 
-      window.setTimeout(hideIntroSplash, 3200);
+      window.setTimeout(hideIntroSplash, 4000);
 
 
       function showToast(msg){

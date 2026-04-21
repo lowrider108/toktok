@@ -461,6 +461,56 @@
       50%{ opacity:1; transform:translateX(2px); }
     }
 
+    .policy-box{
+      margin-top: 22px;
+      background: linear-gradient(180deg, #ffffff, #f8fbff);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      padding: 20px;
+    }
+    .policy-box h3{
+      margin:0 0 10px;
+      font-size:20px;
+      letter-spacing:-.3px;
+    }
+    .policy-box p{
+      margin:0 0 10px;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.75;
+    }
+    .policy-list{
+      margin:0;
+      padding-left:18px;
+      color:#334155;
+      font-size:14px;
+      line-height:1.75;
+    }
+    .policy-list li{ margin: 7px 0; }
+    .policy-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:14px;
+    }
+    .policy-link{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 12px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:#fff;
+      font-size:13px;
+      font-weight:800;
+      color:#1f2937;
+    }
+    .policy-link:hover{
+      border-color: rgba(37,99,235,.35);
+      background: rgba(37,99,235,.05);
+    }
+
   </style>
 </head>
 
@@ -654,12 +704,28 @@
         </div>
       </aside>
     </div>
+    <section class="policy-box" aria-label="출처 및 면책 안내">
+      <h3>출처 및 면책 안내</h3>
+      <p>
+        본 서비스는 충청지역 통계정보를 이해하기 쉽게 안내하기 위한 참고용 페이지입니다.
+      </p>
+      <ul class="policy-list">
+        <li><b>출처 안내</b> : 주요 통계·보도자료 확인은 국가데이터처 충청지방데이터청 공식 홈페이지(http://mods.go.kr/arcc) 와 국가 통계 관련 공식 자료를 함께 참고해 주세요.</li>
+        <li><b>면책 안내</b> : 본 서비스는 <b>국가데이터처 충청지방데이터청을 대표하는 공식 앱이 아닙니다.</b> 공개된 자료를 바탕으로 이용자 이해를 돕기 위해 재구성한 안내용 서비스입니다.</li>
+        <li><b>최종 확인</b> : 정책 판단, 대외 인용, 최종 수치 확인은 반드시 공식 홈페이지와 원문 자료를 확인해 주세요.</li>
+      </ul>
+      <div class="policy-links">
+        <a class="policy-link" href="https://mods.go.kr/arcc/" target="_blank" rel="noopener">국가데이터처 충청지방데이터청 바로가기</a>
+        <a class="policy-link" href="https://kosis.kr" target="_blank" rel="noopener">국가통계포털(KOSIS)</a>
+      </div>
+    </section>
+
   </main>
 
   <footer>
     <div class="footer-inner">
-      <div>© 국가데이터처 충주사무소</div>
-      <div>본 페이지는 안내용이며, 중요한 판단/정책결정은 <b>"충청지방데이터청"</b> 홈페이지의 공식 보도자료를 확인해 주세요.</div>
+      <div>© 충청통계톡 안내 페이지</div>
+      <div>본 서비스는 국가데이터처 충청지방데이터청을 대표하는 공식 앱이 아니며, 최종 정보 확인은 <a href="https://mods.go.kr/arcc/" target="_blank" rel="noopener"><b>국가데이터처 충청지방데이터청 공식 홈페이지</b></a>를 참고해 주세요.</div>
     </div>
   </footer>
 

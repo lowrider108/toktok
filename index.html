@@ -865,7 +865,15 @@
         div.appendChild(content);
         enhanceTables(content);
         chatLog.appendChild(div);
-        chatLog.scrollTop = chatLog.scrollHeight;
+        return div;
+      }
+
+      function keepQuestionVisible(container, questionBubble){
+        if(!container || !questionBubble) return;
+        requestAnimationFrame(() => {
+          const top = Math.max(questionBubble.offsetTop - 8, 0);
+          container.scrollTop = top;
+        });
       }
 
       async function callBackend(messages){
@@ -974,7 +982,15 @@
         div.appendChild(content);
         enhanceTables(content);
         chatLog2.appendChild(div);
-        chatLog2.scrollTop = chatLog2.scrollHeight;
+        return div;
+      }
+
+      function keepQuestionVisible2(container, questionBubble){
+        if(!container || !questionBubble) return;
+        requestAnimationFrame(() => {
+          const top = Math.max(questionBubble.offsetTop - 8, 0);
+          container.scrollTop = top;
+        });
       }
 
       async function callBackend2(messages){

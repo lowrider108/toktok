@@ -325,20 +325,6 @@
       font-size: 13px; opacity: 0; pointer-events:none; transition: opacity .16s ease, transform .16s ease; z-index: 60;
     }
     .toast.show{ opacity: 1; transform: translateX(-50%) translateY(0); }
-
-    .policy-note{
-      margin-top: 18px;
-      background:#fff8e8;
-      border:1px solid #f3d38a;
-      border-radius: 18px;
-      padding: 16px 18px;
-      box-shadow: 0 8px 20px rgba(0,0,0,.04);
-    }
-    .policy-note h3{ margin:0 0 10px; font-size:18px; letter-spacing:-.3px; }
-    .policy-note p{ margin:0 0 8px; color:#4b5563; line-height:1.7; font-size:14px; }
-    .policy-note ul{ margin:8px 0 0; padding-left:18px; color:#4b5563; }
-    .policy-note li{ margin:6px 0; line-height:1.7; }
-    .policy-note a{ color:#0b57d0; text-decoration:underline; }
   
     /* Markdown rendering */
     .bubble .md-content{font-size:14px; line-height:1.65; overflow-x:auto;}
@@ -397,13 +383,27 @@
       backdrop-filter: blur(8px);
     }
     #appIntroSplash.hide .app-intro-card{
-      opacity:0;
-      transform:translateY(-10px) scale(.965);
-    }
+    width:min(96vw, 760px);
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:18px;
+    animation:introUp .55s ease;
+    transition:opacity .5s ease, transform .5s ease;
+    will-change:transform, opacity;
+  }
     #appIntroSplash.hide .app-intro-image{
-      transform:translateY(-6px) scale(.985);
-      filter:drop-shadow(0 10px 18px rgba(0,0,0,.05));
-    }
+    width:min(92vw, 720px);
+    max-width:720px;
+    height:auto;
+    display:block;
+    filter:drop-shadow(0 20px 28px rgba(0,0,0,.08));
+    border-radius:28px;
+    transition:transform .55s ease, filter .55s ease, opacity .45s ease;
+    animation:introFloat 2.1s ease-in-out infinite;
+    will-change:transform, opacity;
+  }
     .app-intro-card{
       width:min(92vw, 520px);
       text-align:center;
@@ -654,24 +654,12 @@
         </div>
       </aside>
     </div>
-    <section class="policy-note" aria-label="출처 및 면책 안내">
-      <h3>출처 및 면책 안내</h3>
-      <p><b>충청통계톡은 정부기관이 직접 운영하거나 정부기관을 대표하는 공식 애플리케이션이 아닙니다.</b></p>
-      <p>본 서비스는 공개된 공식 통계자료를 이용자가 쉽게 이해할 수 있도록 재구성하여 제공하는 민간 정보 제공 서비스입니다.</p>
-      <ul>
-        <li>국가통계포털(KOSIS): <a href="https://kosis.kr" target="_blank" rel="noopener noreferrer">https://kosis.kr</a></li>
-        <li>통계청: <a href="https://kostat.go.kr" target="_blank" rel="noopener noreferrer">https://kostat.go.kr</a></li>
-        <li>e-나라지표: <a href="https://www.index.go.kr" target="_blank" rel="noopener noreferrer">https://www.index.go.kr</a></li>
-      </ul>
-      <p style="margin-top:10px;">앱 및 페이지에서 제공되는 내용은 참고용이며, 정확한 원문과 최종 기준 정보는 반드시 공식 제공처에서 확인해 주세요.</p>
-    </section>
-
   </main>
 
   <footer>
     <div class="footer-inner">
-      <div>© 충청통계톡</div>
-      <div>본 서비스는 정부기관 공식 앱이 아니며, 공개된 공식 통계자료 기반의 안내용 서비스입니다. 최종 정보는 KOSIS·통계청 등 공식 제공처에서 확인해 주세요.</div>
+      <div>© 국가데이터처 충주사무소</div>
+      <div>본 페이지는 안내용이며, 중요한 판단/정책결정은 <b>"충청지방데이터청"</b> 홈페이지의 공식 보도자료를 확인해 주세요.</div>
     </div>
   </footer>
 
@@ -767,6 +755,26 @@
         });
       }
 
+      function scrollBubbleToTop(bubble){
+        if(!bubble) return;
+        bubble.scrollIntoView({ behavior:'smooth', block:'start' });
+      }
+
+      function createBubble(role, text, botName){
+        const div = document.createElement('div');
+        div.className = 'bubble ' + (role === 'user' ? 'user' : 'assistant');
+        const meta = document.createElement('span');
+        meta.className = 'meta';
+        meta.textContent = role === 'user' ? '나' : botName;
+        div.appendChild(meta);
+        const content = document.createElement('div');
+        content.className = 'md-content';
+        content.innerHTML = renderMarkdownToHtml(text);
+        div.appendChild(content);
+        enhanceTables(content);
+        return div;
+      }
+
       const heroInput = document.getElementById('heroInput');
       const heroAsk = document.getElementById('heroAsk');
       const mulgaSection = document.getElementById('mulgatalk');
@@ -844,19 +852,9 @@
       }];
 
       function appendBubble(role, text){
-        const div = document.createElement('div');
-        div.className = 'bubble ' + (role === 'user' ? 'user' : 'assistant');
-        const meta = document.createElement('span');
-        meta.className = 'meta';
-        meta.textContent = role === 'user' ? '나' : '물가톡톡';
-        div.appendChild(meta);
-        const content = document.createElement('div');
-        content.className = 'md-content';
-        content.innerHTML = renderMarkdownToHtml(text);
-        div.appendChild(content);
-        enhanceTables(content);
+        const div = createBubble(role, text, '물가톡톡');
         chatLog.appendChild(div);
-        chatLog.scrollTop = chatLog.scrollHeight;
+        return div;
       }
 
       async function callBackend(messages){
@@ -876,8 +874,9 @@
         dismissKeyboard();
         const q = (text || '').trim();
         if(!q) return;
-        appendBubble('user', q);
+        const userBubble = appendBubble('user', q);
         convo.push({role:'user', content:q});
+        scrollBubbleToTop(userBubble);
         chatSend.disabled = true;
         chatInput.disabled = true;
 
@@ -891,7 +890,7 @@
         loading.appendChild(meta);
         loading.appendChild(document.createTextNode('답변 생성 중…'));
         chatLog.appendChild(loading);
-        chatLog.scrollTop = chatLog.scrollHeight;
+        scrollBubbleToTop(userBubble);
 
         try{
           const data = await callBackend(convo);
@@ -903,6 +902,7 @@
           }else{
             appendBubble('assistant', answer);
             convo.push({role:'assistant', content: answer});
+            scrollBubbleToTop(userBubble);
           }
         }catch(err){
           document.getElementById(loadingId)?.remove();
@@ -953,19 +953,9 @@
       }];
 
       function appendBubble2(role, text){
-        const div = document.createElement('div');
-        div.className = 'bubble ' + (role === 'user' ? 'user' : 'assistant');
-        const meta = document.createElement('span');
-        meta.className = 'meta';
-        meta.textContent = role === 'user' ? '나' : '산업톡톡';
-        div.appendChild(meta);
-        const content = document.createElement('div');
-        content.className = 'md-content';
-        content.innerHTML = renderMarkdownToHtml(text);
-        div.appendChild(content);
-        enhanceTables(content);
+        const div = createBubble(role, text, '산업톡톡');
         chatLog2.appendChild(div);
-        chatLog2.scrollTop = chatLog2.scrollHeight;
+        return div;
       }
 
       async function callBackend2(messages){
@@ -985,8 +975,9 @@
         dismissKeyboard();
         const q = (text || '').trim();
         if(!q) return;
-        appendBubble2('user', q);
+        const userBubble = appendBubble2('user', q);
         convo2.push({role:'user', content:q});
+        scrollBubbleToTop(userBubble);
         chatSend2.disabled = true;
         chatInput2.disabled = true;
 
@@ -1000,7 +991,7 @@
         loading.appendChild(meta);
         loading.appendChild(document.createTextNode('답변 생성 중…'));
         chatLog2.appendChild(loading);
-        chatLog2.scrollTop = chatLog2.scrollHeight;
+        scrollBubbleToTop(userBubble);
 
         try{
           const data = await callBackend2(convo2);
@@ -1012,6 +1003,7 @@
           }else{
             appendBubble2('assistant', answer);
             convo2.push({role:'assistant', content: answer});
+            scrollBubbleToTop(userBubble);
           }
         }catch(err){
           document.getElementById(loadingId)?.remove();

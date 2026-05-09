@@ -19,9 +19,10 @@ if (!OPENAI_API_KEY) {
 // ✅ Vector Store IDs (사용자 제공)
 const VS_MULGA = "vs_699fec9f42b8819188937d8b856c94ea"; // 물가정보
 const VS_SANUP = "vs_69a001fb3f148191ae4117046b412fb5"; // 산업활동
+const VS_KOYON = "vs_69fd72afd0cc8191a60f722c0e6a99be"; // 고용동향
 
 // ✅ 최신 필터 준비 여부(벡터스토어별)
-const latestFilterReady = { [VS_MULGA]: false, [VS_SANUP]: false };
+const latestFilterReady = { [VS_MULGA]: false, [VS_SANUP]: false, [VS_KOYON]: false };
 
 // 🔹 지침 파일 로드 (없으면 서버가 바로 죽지 않게 안전 처리)
 function safeRead(fileName) {
@@ -35,6 +36,7 @@ function safeRead(fileName) {
 
 const mulgaSystem = safeRead("mulga_prompt.txt");
 const sanupSystem = safeRead("sanup_prompt.txt");
+const koyonSystem = safeRead("koyon_prompt.txt");
 
 // ✅ 프론트에서 messages를 어떤 키로 보내도 흡수 (content/text 둘 다)
 function normalizeMessages(messages) {
@@ -307,15 +309,31 @@ app.post("/api/saneobtogtog", async (req, res) => {
   }
 });
 
+// 🔹 고용톡톡
+app.post("/api/koyontogtog", async (req, res) => {
+  try {
+    const answer = await callOpenAI(koyonSystem, req.body.messages, {
+      vectorStoreId: VS_KOYON,
+      domainLabel: "고용동향",
+      enforceLatest: latestFilterReady[VS_KOYON],
+      maxNumResults: 8,
+    });
+    res.json({ text: answer });
+  } catch (e) {
+    console.error("❌ /api/koyontogtog 오류:", e.message);
+    res.status(500).json({ text: "고용톡톡 서버 오류", detail: e.message });
+  }
+});
+
 // (선택) 루트로 들어오면 index 파일 보여주기
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "index_public_v3.html"));
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, async () => {
   console.log(`✅ http://localhost:${PORT} 실행 중`);
-  console.log("✅ API: POST /api/mulgatogtog  |  POST /api/saneobtogtog");
+  console.log("✅ API: POST /api/mulgatogtog  |  POST /api/saneobtogtog  |  POST /api/koyontogtog");
 
   // ✅ 서버 시작 시 최신 파일 자동 지정
   // - 벡터스토어 안에 파일이 1개면 그 파일이 최신
@@ -326,6 +344,10 @@ app.listen(PORT, async () => {
   const r2 = await refreshLatestInVectorStore(VS_SANUP);
   latestFilterReady[VS_SANUP] = !!(r2 && r2.ok);
 
+  const r3 = await refreshLatestInVectorStore(VS_KOYON);
+  latestFilterReady[VS_KOYON] = !!(r3 && r3.ok);
+
   if (!latestFilterReady[VS_MULGA]) console.warn("⚠️ 물가 벡터스토어: 최신 필터(is_latest) 설정에 실패해서 전체 파일 검색으로 동작합니다.");
   if (!latestFilterReady[VS_SANUP]) console.warn("⚠️ 산업 벡터스토어: 최신 필터(is_latest) 설정에 실패해서 전체 파일 검색으로 동작합니다.");
+  if (!latestFilterReady[VS_KOYON]) console.warn("⚠️ 고용 벡터스토어: 최신 필터(is_latest) 설정에 실패해서 전체 파일 검색으로 동작합니다.");
 });

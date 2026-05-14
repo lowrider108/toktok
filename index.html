@@ -195,8 +195,7 @@
     .section-head h2{ margin:0; font-size: 24px; letter-spacing:-.6px; }
     .section-head p{ margin:4px 0 0; color:var(--muted); font-size:14px; line-height:1.7; }
 
-    .grid{ margin-top: 16px; display:grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
-    @media (max-width: 1080px){ .grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    .grid{ margin-top: 16px; display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
     @media (max-width: 860px){ .grid{ grid-template-columns: 1fr; } }
     .service{
       position: relative; background: var(--card); border: 1px solid var(--line);
@@ -462,15 +461,6 @@
       50%{ opacity:1; transform:translateX(2px); }
     }
 
-
-    .gov-box{
-      margin-top:14px; padding:14px 16px; border:1px solid rgba(217,119,6,.22);
-      background:#fffaf0; border-radius:18px; box-shadow:0 8px 20px rgba(0,0,0,.04);
-    }
-    .gov-box strong{display:block; margin-bottom:6px; color:#92400e;}
-    .gov-box p{margin:0; font-size:14px; line-height:1.75; color:#5b6472;}
-    .gov-box a{color:#0b57d0; text-decoration:underline;}
-
   </style>
 </head>
 
@@ -495,7 +485,7 @@
 
       <div class="header-actions" aria-label="상단 안내">
         <span class="pill"><span class="dot" aria-hidden="true"></span>운영 중</span>
-        <span class="pill">물가톡톡 · 산업톡톡 · 고용톡톡 통합</span>
+        <span class="pill">물가톡톡 · 산업톡톡 통합</span>
       </div>
     </div>
   </header>
@@ -506,23 +496,13 @@
         <div class="eyebrow"><span class="dot" aria-hidden="true"></span>충청지역 물가/산업통계를 대화형으로 안내합니다</div>
         <h1>이제 통계와 대화하세요</h1>
         <p>
-          <b>물가톡톡</b>, <b>산업톡톡</b>, <b>고용톡톡</b>은 충청지역 통계를 더 쉽게 이해할 수 있도록 돕는 대화형 안내 서비스입니다.
+          <b>물가톡톡</b>과 <b>산업톡톡</b>은 충청지역 통계를 더 쉽게 이해할 수 있도록 돕는 대화형 안내 서비스입니다.
           <b>여기서 보기</b>는 이 페이지에서 바로 질문/답변을 보여주고, <b>GPT에서 보기</b>는 <b>ChatGPT</b>에서 새 창으로 열립니다.
         </p>
 
         <div class="notice" role="note" aria-label="이용 전 안내">
           <div class="mini"><b>로그인/접속</b><br/>"GPT에서 보기" 는 ChatGPT 로그인, 유/무료버전 상태에 따라 화면이 달라질 수 있어요.</div>
-          <div class="mini"><b>공식 수치</b><br/>세부 수치는 충청지방데이터청 공식 자료와 함께 확인해 주세요.</div>
-        </div>
-
-        <div class="gov-box" role="note" aria-label="출처 및 면책 안내">
-          <strong>출처 및 안내</strong>
-          <p>
-            이 서비스는 <b>충청지역 통계 이해를 돕기 위한 안내용 서비스</b>입니다. <b>정부기관의 공식 모바일 앱이 아니며</b>,
-            민원 신청·행정 처리 기능을 제공하지 않습니다. 제공되는 통계 설명과 수치 확인은
-            <a href="https://mods.go.kr/arcc/" target="_blank" rel="noopener noreferrer">충청지방데이터청 공식 홈페이지</a>의
-            보도자료·통계표 등 원문 자료를 함께 확인해 주세요.
-          </p>
+          <div class="mini"><b>공식 수치</b><br/>세부 수치는 "충청지방데이터청" 보도자료·통계표 등 공식 자료를 함께 확인해 주세요.</div>
         </div>
       </div>
 
@@ -592,34 +572,6 @@
           <div class="hint">GPT는 새 탭으로 열립니다</div>
         </div>
       </article>
-
-      <!-- 관리 포인트 H-2: 고용톡톡 링크 -->
-      <article class="service" data-title="고용톡톡" data-url="https://chatgpt.com/g/g-68c36bfd5c208191948b04601f6b6a09-cungceongjiyeog-goyongdonghyang-caesbos-goyongtogtog" tabindex="0" role="link" aria-label="고용톡톡 열기">
-        <div class="tagrow">
-          <div class="tag"><span class="dot" aria-hidden="true"></span>운영 중</div>
-          <div class="hint" aria-hidden="true">보기: 여기서 보기 · GPT</div>
-        </div>
-
-        <button class="service-title titlebtn" type="button" data-local aria-label="고용톡톡 여기서 보기">고용톡톡</button>
-        <div class="service-desc">
-          충청지역 고용동향을 고용률·실업률·취업자 수 중심으로
-          쉽게 정리해 드립니다.
-        </div>
-        <div class="service-points">
-          <span>고용동향 요약</span>
-          <span>고용률·실업률</span>
-          <span>고용용어 설명</span>
-        </div>
-
-        <div class="actions">
-          <div class="btnrow">
-            <button class="btn primary recommend" type="button" data-local>여기서 보기</button>
-            <button class="btn" type="button" data-open>GPT에서 보기 →</button>
-            <button class="btn" type="button" data-copy>링크 복사</button>
-          </div>
-          <div class="hint">GPT는 새 탭으로 열립니다</div>
-        </div>
-      </article>
     </div>
 
     <section class="highlight" aria-label="한눈에 보는 영역">
@@ -656,7 +608,7 @@
         </form>
 
         <div id="chatHint" class="sub" style="margin-top:8px;font-size:13px;">
-          답변은 참고용이며, 최종 수치는 공식 보도자료/통계표를 확인해 주세요.(https://mods.go.kr/arcc/)
+          답변은 참고용이며, 최종 수치는 공식 보도자료/통계표를 확인해 주세요.
         </div>
       </div>
     </section>
@@ -691,43 +643,11 @@
       </div>
     </section>
 
-    <!-- 관리 포인트 L-2: 고용톡톡 페이지 내 질문 -->
-    <section id="koyontalk" class="panel" aria-label="고용톡톡 빠른 질문" style="display:none; margin-top:16px;">
-      <h3>고용톡톡 빠른 질문</h3>
-      <p class="sub" style="margin:0 0 12px;">
-        아래 버튼을 누르면 <b>페이지에서 바로 답변</b>을 보여드려요.
-      </p>
-
-      <div class="quick" role="group" aria-label="고용톡톡 질문 버튼">
-        <button class="qbtn" type="button" data-q3="summary">1. 이번달 고용동향 요약</button>
-        <button class="qbtn" type="button" data-q3="key">2. 고용률·실업률 요약</button>
-        <button class="qbtn" type="button" data-q3="term">3. 고용용어 설명</button>
-        <button class="qbtn ghost" type="button" data-q3="free">4. 직접 물어보기</button>
-      </div>
-
-      <div class="chatwrap" aria-label="대화 내용">
-        <div id="chatLog3" class="chatlog" aria-live="polite" aria-relevant="additions"></div>
-
-        <form id="chatForm3" class="chatform" autocomplete="off">
-          <label class="sr-only" for="chatInput3">추가 질문 입력</label>
-          <input id="chatInput3" class="chatin" type="text" inputmode="text"
-            placeholder="추가 질문을 입력하세요 (예: 실업률은 뭐야?)" />
-          <button id="chatSend3" class="send" type="submit">전송</button>
-        </form>
-
-        <div class="sub" style="margin-top:8px;font-size:13px;">
-          답변은 참고용이며, 최종 수치는 공식 보도자료/통계표를 확인해 주세요.
-        </div>
-      </div>
-    </section>
-
    
       <aside class="panel" aria-label="문의 및 안내">
         <h3>안내</h3>
         <div style="color:var(--muted);font-size:14px;line-height:1.7;">
           <ul class="bullets">
-            <li>이 서비스는 충청지역 통계 이해를 돕는 안내용 서비스이며, 정부기관의 공식 모바일 앱이 아닙니다.</li>
-            <li>원문 출처: <a href="https://mods.go.kr/arcc/" target="_blank" rel="noopener noreferrer">충청지방데이터청 공식 홈페이지</a></li>
             <li>연결된 챗봇은 외부 서비스(ChatGPT) 또는 GPT API를 통해 동작합니다.</li>
             <li>접속이 원활하지 않다면 브라우저를 새로고침하거나 잠시 후 다시 시도해 주세요.</li>
           </ul>
@@ -738,8 +658,8 @@
 
   <footer>
     <div class="footer-inner">
-      <div>© 충청통계톡 안내 페이지</div>
-      <div>본 서비스는 안내용이며 정부기관의 공식 모바일 앱이 아닙니다. 공식 원문 출처: <a href="https://mods.go.kr/arcc/" target="_blank" rel="noopener noreferrer"><b>충청지방데이터청 홈페이지</b></a></div>
+      <div>© 국가데이터처 충주사무소</div>
+      <div>본 페이지는 안내용이며, 중요한 판단/정책결정은 <b>"충청지방데이터청"</b> 홈페이지의 공식 보도자료를 확인해 주세요.</div>
     </div>
   </footer>
 
@@ -809,12 +729,24 @@
         }
       }
 
+      function protectNumberRanges(text){
+        return String(text || '').replace(/(\d)\s*~\s*(\d)/g, '$1∼$2');
+      }
+
       function renderMarkdownToHtml(text){
+        const safeText = protectNumberRanges(text);
+
         if(window.marked){
-          marked.setOptions({ breaks:true, gfm:true });
-          return marked.parse(text || '');
+          marked.setOptions({
+            breaks:true,
+            gfm:true,
+            singleTilde:false
+          });
+
+          return marked.parse(safeText || '');
         }
-        return String(text || '')
+
+        return String(safeText || '')
           .replace(/&/g, '&amp;')
           .replace(/</g, '&lt;')
           .replace(/>/g, '&gt;')
@@ -839,13 +771,11 @@
       const heroAsk = document.getElementById('heroAsk');
       const mulgaSection = document.getElementById('mulgatalk');
       const saneobSection = document.getElementById('saneobtalk');
-      const koyonSection = document.getElementById('koyontalk');
 
       function showMulgaPanel(){
         dismissKeyboard();
         mulgaSection.style.display = 'block';
         saneobSection.style.display = saneobSection.style.display || 'none';
-        koyonSection.style.display = koyonSection.style.display || 'none';
         if(!chatLog.dataset.welcomed){
           appendBubble('assistant', '원하시는 버튼을 눌러 보세요. 바로 요약해 드릴게요 🙂');
           chatLog.dataset.welcomed = '1';
@@ -857,26 +787,11 @@
         dismissKeyboard();
         saneobSection.style.display = 'block';
         mulgaSection.style.display = mulgaSection.style.display || 'none';
-        koyonSection.style.display = koyonSection.style.display || 'none';
         if(!chatLog2.dataset.welcomed){
           appendBubble2('assistant', '원하시는 버튼을 눌러 보세요. 산업동향을 쉽게 정리해 드릴게요 🙂');
           chatLog2.dataset.welcomed = '1';
         }
         saneobSection.scrollIntoView({behavior:'smooth', block:'start'});
-      }
-
-
-
-      function showKoyonPanel(){
-        dismissKeyboard();
-        koyonSection.style.display = 'block';
-        mulgaSection.style.display = mulgaSection.style.display || 'none';
-        saneobSection.style.display = saneobSection.style.display || 'none';
-        if(!chatLog3.dataset.welcomed){
-          appendBubble3('assistant', '원하시는 버튼을 눌러 보세요. 고용동향을 쉽게 정리해 드릴게요 🙂');
-          chatLog3.dataset.welcomed = '1';
-        }
-        koyonSection.scrollIntoView({behavior:'smooth', block:'start'});
       }
 
       document.querySelectorAll('[data-hero-target]').forEach(btn => {
@@ -886,9 +801,6 @@
           if(target === 'saneob'){
             showSaneobPanel();
             sendUserMessage2(text);
-          }else if(target === 'koyon'){
-            showKoyonPanel();
-            sendUserMessage3(text);
           }else{
             showMulgaPanel();
             sendUserMessage(text);
@@ -904,12 +816,8 @@
             heroInput.focus();
             return;
           }
-          const isKoyon = /고용|취업|실업|고용률|실업률|경제활동|비경제활동|일자리|구직/.test(q);
           const isSaneob = /산업|생산|소비|투자|서비스업|광공업|재고|건설/.test(q);
-          if(isKoyon){
-            showKoyonPanel();
-            sendUserMessage3(q);
-          }else if(isSaneob){
+          if(isSaneob){
             showSaneobPanel();
             sendUserMessage2(q);
           }else{
@@ -948,15 +856,7 @@
         div.appendChild(content);
         enhanceTables(content);
         chatLog.appendChild(div);
-        return div;
-      }
-
-      function keepQuestionVisible(container, questionBubble){
-        if(!container || !questionBubble) return;
-        requestAnimationFrame(() => {
-          const top = Math.max(questionBubble.offsetTop - 8, 0);
-          container.scrollTop = top;
-        });
+        chatLog.scrollTop = chatLog.scrollHeight;
       }
 
       async function callBackend(messages){
@@ -1065,15 +965,7 @@
         div.appendChild(content);
         enhanceTables(content);
         chatLog2.appendChild(div);
-        return div;
-      }
-
-      function keepQuestionVisible2(container, questionBubble){
-        if(!container || !questionBubble) return;
-        requestAnimationFrame(() => {
-          const top = Math.max(questionBubble.offsetTop - 8, 0);
-          container.scrollTop = top;
-        });
+        chatLog2.scrollTop = chatLog2.scrollHeight;
       }
 
       async function callBackend2(messages){
@@ -1156,123 +1048,12 @@
         chatInput2.value = '';
       });
 
-
-      const chatLog3 = document.getElementById('chatLog3');
-      const chatForm3 = document.getElementById('chatForm3');
-      const chatInput3 = document.getElementById('chatInput3');
-      const chatSend3 = document.getElementById('chatSend3');
-
-      const convo3 = [{
-        role: 'system',
-        content:
-          '당신은 "고용톡톡" 도우미입니다. 한국어로 친절하고 쉽게 설명하세요. ' +
-          '가능하면 고용률·실업률·취업자 수 흐름을 구분해 말하고, 어려운 용어는 쉬운 말로 풀어주세요. ' +
-          '모르면 추측하지 말고, 어떤 공식자료를 확인하면 되는지 안내하세요.'
-      }];
-
-      function appendBubble3(role, text){
-        const div = document.createElement('div');
-        div.className = 'bubble ' + (role === 'user' ? 'user' : 'assistant');
-        const meta = document.createElement('span');
-        meta.className = 'meta';
-        meta.textContent = role === 'user' ? '나' : '고용톡톡';
-        div.appendChild(meta);
-        const content = document.createElement('div');
-        content.className = 'md-content';
-        content.innerHTML = renderMarkdownToHtml(text);
-        div.appendChild(content);
-        enhanceTables(content);
-        chatLog3.appendChild(div);
-        return div;
-      }
-
-      async function callBackend3(messages){
-        const res = await fetch('/api/koyontogtog', {
-          method: 'POST',
-          headers: {'Content-Type':'application/json'},
-          body: JSON.stringify({ messages })
-        });
-        if(!res.ok){
-          const t = await res.text().catch(()=> '');
-          throw new Error('API 오류 (' + res.status + '): ' + (t || '서버 응답 없음'));
-        }
-        return await res.json();
-      }
-
-      async function sendUserMessage3(text){
-        dismissKeyboard();
-        const q = (text || '').trim();
-        if(!q) return;
-        appendBubble3('user', q);
-        convo3.push({role:'user', content:q});
-        chatSend3.disabled = true;
-        chatInput3.disabled = true;
-
-        const loadingId = 'loading3-' + Date.now();
-        const loading = document.createElement('div');
-        loading.className = 'bubble assistant';
-        loading.id = loadingId;
-        const meta = document.createElement('span');
-        meta.className = 'meta';
-        meta.textContent = '고용톡톡';
-        loading.appendChild(meta);
-        loading.appendChild(document.createTextNode('답변 생성 중…'));
-        chatLog3.appendChild(loading);
-        chatLog3.scrollTop = chatLog3.scrollHeight;
-
-        try{
-          const data = await callBackend3(convo3);
-          const answer = (data && (data.text || data.answer || data.output)) || '';
-          document.getElementById(loadingId)?.remove();
-
-          if(!answer){
-            appendBubble3('assistant', '서버에서 답변을 받지 못했어요. 응답 형식을 확인해 주세요.');
-          }else{
-            appendBubble3('assistant', answer);
-            convo3.push({role:'assistant', content: answer});
-          }
-        }catch(err){
-          document.getElementById(loadingId)?.remove();
-          appendBubble3('assistant',
-            '지금은 페이지에서 바로 답변을 가져올 수 없어요.\n' +
-            '• 서버(API) 연결이 아직 없거나\n' +
-            '• 주소(/api/koyontogtog)가 준비되지 않았을 수 있어요.\n\n' +
-            '임시로는 "GPT에서 보기 →" 버튼으로 고용톡톡을 열어 이용해 주세요.'
-          );
-          console.error(err);
-        }finally{
-          chatSend3.disabled = false;
-          chatInput3.disabled = false;
-          dismissKeyboard();
-        }
-      }
-
-      koyonSection?.querySelectorAll('[data-q3]').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const kind = btn.getAttribute('data-q3');
-          if(kind === 'free'){ dismissKeyboard(); return; }
-          const promptMap = {
-            summary: '이번달 충청지역 고용동향을 핵심만 5줄로 요약해줘. 고용률·실업률·취업자 수 흐름 중심으로 설명해줘.',
-            key: '이번달 충청지역 고용률, 실업률, 취업자 수, 경제활동인구, 비경제활동인구를 한 번에 이해할 수 있게 정리해줘.',
-            term: '고용률, 실업률, 취업자, 실업자, 경제활동인구, 비경제활동인구를 쉬운 말로 설명해줘.'
-          };
-          sendUserMessage3(promptMap[kind] || '');
-        });
-      });
-
-      chatForm3?.addEventListener('submit', (e)=>{
-        e.preventDefault();
-        sendUserMessage3(chatInput3.value);
-        chatInput3.value = '';
-      });
-
       document.querySelectorAll('.service').forEach(card => {
         const url = card.dataset.url;
         card.addEventListener('click', (e) => {
           if(e.target && (e.target.closest('button'))) return;
           if(card.dataset.title === '물가톡톡') showMulgaPanel();
           else if(card.dataset.title === '산업톡톡') showSaneobPanel();
-          else if(card.dataset.title === '고용톡톡') showKoyonPanel();
           else openInNewTab(url);
         });
 
@@ -1281,7 +1062,6 @@
             e.preventDefault();
             if(card.dataset.title === '물가톡톡') showMulgaPanel();
             else if(card.dataset.title === '산업톡톡') showSaneobPanel();
-            else if(card.dataset.title === '고용톡톡') showKoyonPanel();
             else openInNewTab(url);
           }
         });
@@ -1295,7 +1075,6 @@
             e.stopPropagation();
             if(card.dataset.title === '물가톡톡') showMulgaPanel();
             else if(card.dataset.title === '산업톡톡') showSaneobPanel();
-            else if(card.dataset.title === '고용톡톡') showKoyonPanel();
           });
         });
 

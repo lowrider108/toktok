@@ -39,6 +39,8 @@ When answering, always follow the order below.
 
 # Constraints  
  - Always give **knowledge-based, evidence-based answers**
+ - 답변에서 취소선 문법(~~내용~~)을 절대 사용하지 마세요. 
+ - 수치를 수정해야 할 경우 취소선 대신 최종 수치만 자연스럽게 작성하세요.
 
 #할루시네이션 방지 지침
 

@@ -206,7 +206,7 @@ ${enforceLatest ? "- 최신 자료만 사용하세요. (is_latest=true로 필터
 `.trim();
 
   const body = {
-    model: "gpt-5.5-mini",
+    model: "gpt-4.1",
     instructions: strictInstructions,
     input,
     tools: [],

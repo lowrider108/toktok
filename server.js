@@ -277,6 +277,14 @@ if (data.usage) {
   return text.trim();
 }
 
+
+// 🔹 Markdown 취소선 제거 및 응답 정리
+function cleanAnswerText(text) {
+  return String(text || "")
+    .replace(/~~/g, "")
+    .replace(/<s>|<\/s>|<del>|<\/del>/gi, "");
+}
+
 // 🔹 물가톡톡
 app.post("/api/mulgatogtog", async (req, res) => {
   try {
@@ -286,7 +294,7 @@ app.post("/api/mulgatogtog", async (req, res) => {
       enforceLatest: latestFilterReady[VS_MULGA],
       maxNumResults: 8,
     });
-    res.json({ text: answer });
+    res.json({ text: cleanAnswerText(answer) });
   } catch (e) {
     console.error("❌ /api/mulgatogtog 오류:", e.message);
     res.status(500).json({ text: "물가톡톡 서버 오류", detail: e.message });
@@ -302,7 +310,7 @@ app.post("/api/saneobtogtog", async (req, res) => {
       enforceLatest: latestFilterReady[VS_SANUP],
       maxNumResults: 8,
     });
-    res.json({ text: answer });
+    res.json({ text: cleanAnswerText(answer) });
   } catch (e) {
     console.error("❌ /api/saneobtogtog 오류:", e.message);
     res.status(500).json({ text: "산업톡톡 서버 오류", detail: e.message });
@@ -318,7 +326,7 @@ app.post("/api/koyontogtog", async (req, res) => {
       enforceLatest: latestFilterReady[VS_KOYON],
       maxNumResults: 8,
     });
-    res.json({ text: answer });
+    res.json({ text: cleanAnswerText(answer) });
   } catch (e) {
     console.error("❌ /api/koyontogtog 오류:", e.message);
     res.status(500).json({ text: "고용톡톡 서버 오류", detail: e.message });

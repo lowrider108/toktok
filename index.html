@@ -471,7 +471,27 @@
     .gov-box p{margin:0; font-size:14px; line-height:1.75; color:#5b6472;}
     .gov-box a{color:#0b57d0; text-decoration:underline;}
 
-  </style>
+  
+
+/* 경제총조사 배너 */
+.top-banner-wrap{
+  margin: 0 auto 18px;
+}
+.top-banner{
+  width:100%;
+  border-radius:24px;
+  overflow:hidden;
+  border:1px solid rgba(37,99,235,.12);
+  box-shadow:0 12px 30px rgba(0,0,0,.08);
+  background:#fff;
+}
+.top-banner img{
+  width:100%;
+  display:block;
+  height:auto;
+}
+
+</style>
 </head>
 
 <body>
@@ -500,7 +520,15 @@
     </div>
   </header>
 
-  <main>
+
+
+<div class="top-banner-wrap">
+  <div class="top-banner">
+    <!-- 경제총조사 배너 이미지 파일명을 economic_census_banner.png 로 저장 후 같은 폴더에 넣어주세요 -->
+    <img src="economic_census_banner.png" alt="2025년 기준 경제총조사 안내 배너">
+  </div>
+</div>
+
     <section class="hero">
       <div class="hero-main">
         <div class="eyebrow"><span class="dot" aria-hidden="true"></span>충청지역 물가/산업통계를 대화형으로 안내합니다</div>

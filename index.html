@@ -471,6 +471,27 @@
     .gov-box p{margin:0; font-size:14px; line-height:1.75; color:#5b6472;}
     .gov-box a{color:#0b57d0; text-decoration:underline;}
 
+    .survey-box{
+      margin-top:12px; padding:14px 16px; border:1px solid rgba(236,72,153,.22);
+      background:#fff1f7; border-radius:18px; box-shadow:0 8px 20px rgba(0,0,0,.04);
+      display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
+    }
+    .survey-box strong{display:block; margin-bottom:4px; color:#9d174d;}
+    .survey-box p{margin:0; font-size:14px; line-height:1.65; color:#5b6472;}
+    .survey-link{
+      display:inline-flex; align-items:center; justify-content:center; gap:6px;
+      padding:10px 13px; border-radius:14px;
+      background:linear-gradient(135deg, #ec4899, #db2777);
+      color:#fff !important; font-size:13px; font-weight:900; text-decoration:none !important;
+      box-shadow:0 10px 20px rgba(37,99,235,.16);
+      white-space:nowrap;
+    }
+    .survey-link:hover{transform:translateY(-1px);}
+    @media (max-width:560px){
+      .survey-box{align-items:stretch;}
+      .survey-link{width:100%;}
+    }
+
   
 
 /* 경제총조사 배너 */
@@ -552,13 +573,21 @@
             보도자료·통계표 등 원문 자료를 함께 확인해 주세요.
           </p>
         </div>
+
+        <div class="survey-box" role="note" aria-label="사용경험 설문조사 안내">
+          <div>
+            <strong>사용경험을 들려주세요</strong>
+            <p>충청통계톡을 이용해 보신 뒤 느낀 점을 간단히 남겨주시면 서비스 개선에 활용하겠습니다.</p>
+          </div>
+          <a class="survey-link" href="https://form.naver.com/edit/akjKa0x_SlO3kF3gVD_MKw" target="_blank" rel="noopener noreferrer">설문조사 바로가기 클릭</a>
+        </div>
       </div>
 
           </section>
 
     <div class="section-head">
       <div>
-        <h2>  원하는 서비스를 선택해 주세요</h2>
+        <h2>원하는 서비스를 선택해 주세요</h2>
         
       </div>
     </div>

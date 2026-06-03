@@ -175,7 +175,7 @@ async function callOpenAI(systemPrompt, messages, options = {}) {
     vectorStoreId = null,
     domainLabel = "",
     enforceLatest = true,
-    maxNumResults = 8,
+    maxNumResults = 4,
   } = options;
 
   if (!OPENAI_API_KEY) throw new Error("OPENAI_API_KEY가 비어있습니다.");

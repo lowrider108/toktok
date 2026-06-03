@@ -292,7 +292,7 @@ app.post("/api/mulgatogtog", async (req, res) => {
       vectorStoreId: VS_MULGA,
       domainLabel: "물가정보",
       enforceLatest: latestFilterReady[VS_MULGA],
-      maxNumResults: 8,
+      maxNumResults: 4,
     });
     res.json({ text: cleanAnswerText(answer) });
   } catch (e) {

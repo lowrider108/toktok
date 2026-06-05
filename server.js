@@ -261,10 +261,6 @@ if (data.usage) {
       .filter(o => o.type === "file_search_call")
       .flatMap(o => o.results || []);
 
-  if (vectorStoreId && (!searchResults || searchResults.length === 0)) {
-    const label = domainLabel ? `(${domainLabel}) ` : "";
-    return `${label}등록된 벡터 자료(최신 자료 포함)에서 관련 내용을 찾지 못했습니다.\n자료가 벡터스토어에 없으면 답변할 수 없습니다.`;
-  }
 
   // ✅ 응답 텍스트 추출 (output_text 모으기)
   const text =

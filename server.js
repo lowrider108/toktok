@@ -221,9 +221,6 @@ ${enforceLatest ? "- 최신 자료만 사용하세요. (is_latest=true로 필터
     };
 
     // ✅ 최신만 필터 (refreshLatestInVectorStore가 attributes 설정해둔 경우)
-    if (enforceLatest) {
-      tool.filters = { type: "eq", key: "is_latest", value: true };
-    }
 
     body.tools.push(tool);
   }
@@ -291,7 +288,7 @@ app.post("/api/mulgatogtog", async (req, res) => {
     const answer = await callOpenAI(mulgaSystem, req.body.messages, {
       vectorStoreId: VS_MULGA,
       domainLabel: "물가정보",
-      enforceLatest: latestFilterReady[VS_MULGA],
+      enforceLatest: false,
       maxNumResults: 4,
     });
     res.json({ text: cleanAnswerText(answer) });
@@ -307,7 +304,7 @@ app.post("/api/saneobtogtog", async (req, res) => {
     const answer = await callOpenAI(sanupSystem, req.body.messages, {
       vectorStoreId: VS_SANUP,
       domainLabel: "산업활동",
-      enforceLatest: latestFilterReady[VS_SANUP],
+      enforceLatest: false,
       maxNumResults: 8,
     });
     res.json({ text: cleanAnswerText(answer) });
@@ -323,7 +320,7 @@ app.post("/api/koyontogtog", async (req, res) => {
     const answer = await callOpenAI(koyonSystem, req.body.messages, {
       vectorStoreId: VS_KOYON,
       domainLabel: "고용동향",
-      enforceLatest: latestFilterReady[VS_KOYON],
+      enforceLatest: false,
       maxNumResults: 8,
     });
     res.json({ text: cleanAnswerText(answer) });
@@ -339,23 +336,7 @@ app.get("/", (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, async () => {
+app.listen(PORT, () => {
   console.log(`✅ http://localhost:${PORT} 실행 중`);
   console.log("✅ API: POST /api/mulgatogtog  |  POST /api/saneobtogtog  |  POST /api/koyontogtog");
-
-  // ✅ 서버 시작 시 최신 파일 자동 지정
-  // - 벡터스토어 안에 파일이 1개면 그 파일이 최신
-  // - 2개 이상이면 파일명 YYYY-MM 비교해서 최신만 is_latest=true
-    const r1 = await refreshLatestInVectorStore(VS_MULGA);
-  latestFilterReady[VS_MULGA] = !!(r1 && r1.ok);
-
-  const r2 = await refreshLatestInVectorStore(VS_SANUP);
-  latestFilterReady[VS_SANUP] = !!(r2 && r2.ok);
-
-  const r3 = await refreshLatestInVectorStore(VS_KOYON);
-  latestFilterReady[VS_KOYON] = !!(r3 && r3.ok);
-
-  if (!latestFilterReady[VS_MULGA]) console.warn("⚠️ 물가 벡터스토어: 최신 필터(is_latest) 설정에 실패해서 전체 파일 검색으로 동작합니다.");
-  if (!latestFilterReady[VS_SANUP]) console.warn("⚠️ 산업 벡터스토어: 최신 필터(is_latest) 설정에 실패해서 전체 파일 검색으로 동작합니다.");
-  if (!latestFilterReady[VS_KOYON]) console.warn("⚠️ 고용 벡터스토어: 최신 필터(is_latest) 설정에 실패해서 전체 파일 검색으로 동작합니다.");
-});
+}); 
